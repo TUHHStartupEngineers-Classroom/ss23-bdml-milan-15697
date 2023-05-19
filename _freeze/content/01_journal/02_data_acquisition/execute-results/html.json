@@ -1,0 +1,18 @@
+{
+  "hash": "82afe20959e8ba01af963ef90034bd7b",
+  "result": {
+    "markdown": "---\ntitle: \"Automated Machine Learning with H20\"\nauthor: \"Milan Bhardwaj\"\n---\n\n::: {.cell hash='02_data_acquisition_cache/html/unnamed-chunk-1_88652b5f76beaadc34c7364160efae5d'}\n\n```{.r .cell-code}\n# install.packages(\"plotly\")\n\nlibrary(h2o)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\n#> \n#> ----------------------------------------------------------------------\n#> \n#> Your next step is to start H2O:\n#>     > h2o.init()\n#> \n#> For H2O package documentation, ask for help:\n#>     > ??h2o\n#> \n#> After starting H2O, you can use the Web UI at http://localhost:54321\n#> For more information visit https://docs.h2o.ai\n#> \n#> ----------------------------------------------------------------------\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\n#> \n#> Attaching package: 'h2o'\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\n#> The following objects are masked from 'package:stats':\n#> \n#>     cor, sd, var\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\n#> The following objects are masked from 'package:base':\n#> \n#>     &&, %*%, %in%, ||, apply, as.factor, as.numeric, colnames,\n#>     colnames<-, ifelse, is.character, is.factor, is.numeric, log,\n#>     log10, log1p, log2, round, signif, trunc\n```\n:::\n\n```{.r .cell-code}\n# To launch H2O locally with default initialization arguments, use the following: \nh2o.init()\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n#> \n#> H2O is not running yet, starting it now...\n#> \n#> Note:  In case of errors look at the following log files:\n#>     /var/folders/f_/3vvxb_bs6p3c7k7n066wwd5c0000gn/T//Rtmp6Xf1kG/file185070504271/h2o_milan_started_from_r.out\n#>     /var/folders/f_/3vvxb_bs6p3c7k7n066wwd5c0000gn/T//Rtmp6Xf1kG/file1850253a4252/h2o_milan_started_from_r.err\n#> \n#> \n#> Starting H2O JVM and connecting: .... Connection successful!\n#> \n#> R is connected to the H2O cluster: \n#>     H2O cluster uptime:         2 seconds 963 milliseconds \n#>     H2O cluster timezone:       Europe/Berlin \n#>     H2O data parsing timezone:  UTC \n#>     H2O cluster version:        3.40.0.1 \n#>     H2O cluster version age:    3 months and 11 days \n#>     H2O cluster name:           H2O_started_from_R_milan_pyx502 \n#>     H2O cluster total nodes:    1 \n#>     H2O cluster total memory:   2.00 GB \n#>     H2O cluster total cores:    8 \n#>     H2O cluster allowed cores:  8 \n#>     H2O cluster healthy:        TRUE \n#>     H2O Connection ip:          localhost \n#>     H2O Connection port:        54321 \n#>     H2O Connection proxy:       NA \n#>     H2O Internal Security:      FALSE \n#>     R Version:                  R version 4.3.0 (2023-04-21)\n```\n:::\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"../../site_libs/pagedtable-1.1/css/pagedtable.css\" rel=\"stylesheet\" />\n<script src=\"../../site_libs/pagedtable-1.1/js/pagedtable.js\"></script>\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

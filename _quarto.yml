@@ -6,7 +6,7 @@ execute:
   cache: true
 
 website:
-  title: "MyLabJournal"
+  title: "Milan's Lab Journal"
   favicon: assets/icons/favicon.svg
   navbar:
     left:
@@ -14,7 +14,7 @@ website:
         text: Home
       - text: "Journal"
         menu: 
-          - text: "01 Tidyverse"
+          - text: "01 Company Segment"
             file: content/01_journal/01_tidyverse.qmd
           - text: "02 Data Acquisition"
             file: content/01_journal/02_data_acquisition.qmd

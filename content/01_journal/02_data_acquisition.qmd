@@ -1,8 +1,13 @@
 ---
-title: "Data Acquisition"
-author: "Joschka Schwarz"
+title: "Automated Machine Learning with H20"
+author: "Milan Bhardwaj"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+```{r}
+# install.packages("plotly")
+
+library(h2o)
+
+# To launch H2O locally with default initialization arguments, use the following: 
+h2o.init()
+```
