@@ -1,5 +1,5 @@
 ---
-title: "My Lab Journal"
+title: "Milan's Lab Journal"
 subtitle: "Business Decisions with Machine Learning"
 author: "Milan Bhardwaj"
 ---
