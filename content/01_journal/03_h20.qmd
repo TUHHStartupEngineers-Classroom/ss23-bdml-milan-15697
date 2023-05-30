@@ -17,7 +17,7 @@ library(tidyverse)
 ```
 
 ```{r}
-employee_attrition_tbl <- read_csv("../../../files/datasets-1067-1925-WA_Fn-UseC_-HR-Employee-Attrition.txt", )
+employee_attrition_tbl <- read_csv("../../files/datasets-1067-1925-WA_Fn-UseC_-HR-Employee-Attrition.txt", )
 employee_attrition_tbl
 ```
 
@@ -313,7 +313,7 @@ library(GGally)
 
 # Load Data data definitions
 
-path_data_definitions <- "../../../files/data_definitions.xlsx"
+path_data_definitions <- "../../files/data_definitions.xlsx"
 definitions_raw_tbl   <- read_excel(path_data_definitions, sheet = 1, col_names = FALSE)
 
 employee_attrition_tbl
@@ -345,10 +345,8 @@ employee_attrition_tbl %>% select(Education, EducationField, TrainingTimesLastYe
 employee_attrition_tbl %>% select(TotalWorkingYears, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager)
 ```
 
-
+Data Summarization
 ```{r}
-# Step 1: Data Summarization -----
-#install.packages("skimr")
 library(skimr)
 skim(employee_attrition_tbl)
 
@@ -381,10 +379,9 @@ employee_attrition_tbl %>%
     filter(value <= 10)
 ```
 
-
+Data Visualization
 ```{r}
 library(GGally)
-# Step 2: Data Visualization ----
 
 employee_attrition_tbl %>%
     select(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome) %>%
@@ -401,9 +398,7 @@ employee_attrition_tbl %>%
 ```
 
 
-Let’s take that one step further and create a custom plotting function:
-
-rlang::quo_is_null() returns TRUE if the quosure contains a NULL value
+Custom plotting function:
 
 ```{r}
 
@@ -440,100 +435,90 @@ employee_attrition_tbl %>%
     select(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome) %>%
     plot_ggpairs(color = Attrition)
 ```
-
-
+# Challenge:
+1. Compensation features: MonthlyIncome and Attrition
+Answer: 
 ```{r}
-# Explore Features by Category
 
-# #   1. Descriptive features: age, gender, marital status 
-# employee_attrition_tbl %>%
-#     select(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome) %>%
-#     plot_ggpairs(Attrition)
-# 
-# #   2. Employment features: department, job role, job level
-# employee_attrition_tbl %>%
-#     select(Attrition, contains("employee"), contains("department"), contains("job")) %>%
-#     plot_ggpairs(Attrition) 
-
-#   3. Compensation features: HourlyRate, MonthlyIncome, StockOptionLevel 
 employee_attrition_tbl %>%
     select(Attrition, contains("income"), contains("rate"), contains("salary"), contains("stock")) %>%
     plot_ggpairs(Attrition)
+```
+#   2. Compensation Features: Percent Salary Hike and Attrition
+```{r}
+employee_attrition_tbl %>%
+    select(Attrition, contains("income"), contains("rate"), contains("salary"), contains("stock")) %>%
+    plot_ggpairs(Attrition)
+# 2) c however groups are relatively similar
 
-# #   4. Survey Results: Satisfaction level, WorkLifeBalance 
-# employee_attrition_tbl %>%
-#     select(Attrition, contains("satisfaction"), contains("life")) %>%
-#     plot_ggpairs(Attrition)
-# 
-# #   5. Performance Data: Job Involvment, Performance Rating
-# employee_attrition_tbl %>%
-#     select(Attrition, contains("performance"), contains("involvement")) %>%
-#     plot_ggpairs(Attrition)
-# 
-# #   6. Work-Life Features 
-# employee_attrition_tbl %>%
-#     select(Attrition, contains("overtime"), contains("travel")) %>%
-#     plot_ggpairs(Attrition)
-# 
-# #   7. Training and Education 
-# employee_attrition_tbl %>%
-#     select(Attrition, contains("training"), contains("education")) %>%
-#     plot_ggpairs(Attrition)
-# 
-# #   8. Time-Based Features: Years at company, years in current role
-# employee_attrition_tbl %>%
-#     select(Attrition, contains("years")) %>%
-#     plot_ggpairs(Attrition)
+
 ```
 
-
+#   3. Compensation Features: Stock Option Level and Attrition
 ```{r}
-#   4. Survey Results: Satisfaction level, WorkLifeBalance
+employee_attrition_tbl %>%
+    select(Attrition, contains("income"), contains("rate"), contains("salary"), contains("stock")) %>%
+    plot_ggpairs(Attrition)
+# 3) b
+```
+
+#   4. Survey Results: Environment Satisfaction , Attrition
+```{r}
 employee_attrition_tbl %>%
     select(Attrition, contains("satisfaction"), contains("life")) %>%
     plot_ggpairs(Attrition)
+# 4) a
 ```
+
+# 5. Survey Results: Work Life Balance and Attrition
 ```{r}
-library(GGally)
-library(ggplot2)
-
-# Simulated data
-attrition <- rep(c("No", "Yes"), c(1200, 200))
-env_satisfaction <- sample(1:5, 1400, replace = TRUE)
-
-# Combine the data into a data frame
-data <- data.frame(Attrition = attrition, Environment_Satisfaction = env_satisfaction)
-
-# Create a ggpairs plot
-ggpairs(data, columns = c("Attrition", "Environment_Satisfaction"),
-        lower = list(continuous = wrap("smooth", alpha = 0.2, size = 0.7)),
-        upper = list(continuous = wrap("cor", method = "pearson")),
-        mapping = aes(color = Attrition))
+employee_attrition_tbl %>%
+    select(Attrition, contains("satisfaction"), contains("life")) %>%
+    plot_ggpairs(Attrition)
+# 5) b
 ```
 
+# 6. Performance Data: Job Involvement and Attrition
 ```{r}
+employee_attrition_tbl %>%
+  select(Attrition, contains("performance"), contains("involvement")) %>%
+  plot_ggpairs(Attrition)
+
+# 6) a
 ```
 
-
-```{r}
-```
+# 7. Work-Life Features: Over Time and Attrition
 
 ```{r}
+employee_attrition_tbl %>%
+  select(Attrition, contains("overtime"), contains("travel")) %>%
+  plot_ggpairs(Attrition)
+
+# 7. b
 ```
 
-
+# 8. Training and Education: Training Times Last Year and Attrition
 ```{r}
+employee_attrition_tbl %>%
+    select(Attrition, contains("training"), contains("education")) %>%
+    plot_ggpairs(Attrition)
+
+# 8) b
 ```
 
+# 9. Time-Based Features: Years At Company and Attrition
 ```{r}
+employee_attrition_tbl %>%
+  select(Attrition, contains("years")) %>%
+  plot_ggpairs(Attrition)
+# 9) b
 ```
 
+# 10. Time-Based Features: Years Since Last Promotion and Attrition
 ```{r}
+employee_attrition_tbl %>%
+  select(Attrition, contains("years")) %>%
+  plot_ggpairs(Attrition)
+# 10) c
+
 ```
-
-```{r}
-```
-
-
-
-
