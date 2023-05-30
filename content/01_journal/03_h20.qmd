@@ -1,5 +1,5 @@
 ---
-title: "Automated Machine Learning with H2O"
+title: "Challenge - Automated Machine Learning with H2O"
 author: "Milan Bhardwaj"
 ---
 
@@ -436,7 +436,8 @@ employee_attrition_tbl %>%
     plot_ggpairs(color = Attrition)
 ```
 # Challenge:
-1. Compensation features: MonthlyIncome and Attrition
+1. Compensation features: MonthlyIncome and Attrition\
+
 Answer: 
 ```{r}
 
@@ -444,81 +445,86 @@ employee_attrition_tbl %>%
     select(Attrition, contains("income"), contains("rate"), contains("salary"), contains("stock")) %>%
     plot_ggpairs(Attrition)
 ```
-#   2. Compensation Features: Percent Salary Hike and Attrition
+
+2. Compensation Features: Percent Salary Hike and Attrition\
+
+Answer: 
 ```{r}
 employee_attrition_tbl %>%
     select(Attrition, contains("income"), contains("rate"), contains("salary"), contains("stock")) %>%
     plot_ggpairs(Attrition)
-# 2) c however groups are relatively similar
-
-
 ```
 
-#   3. Compensation Features: Stock Option Level and Attrition
+3. Compensation Features: Stock Option Level and Attrition\
+
+Answer: 
 ```{r}
 employee_attrition_tbl %>%
     select(Attrition, contains("income"), contains("rate"), contains("salary"), contains("stock")) %>%
     plot_ggpairs(Attrition)
-# 3) b
 ```
 
-#   4. Survey Results: Environment Satisfaction , Attrition
+4. Survey Results: Environment Satisfaction , Attrition\
+
+Answer: 
 ```{r}
 employee_attrition_tbl %>%
     select(Attrition, contains("satisfaction"), contains("life")) %>%
     plot_ggpairs(Attrition)
-# 4) a
 ```
 
-# 5. Survey Results: Work Life Balance and Attrition
+5. Survey Results: Work Life Balance and Attrition\
+
+Answer: 
 ```{r}
 employee_attrition_tbl %>%
     select(Attrition, contains("satisfaction"), contains("life")) %>%
     plot_ggpairs(Attrition)
-# 5) b
 ```
 
-# 6. Performance Data: Job Involvement and Attrition
+6. Performance Data: Job Involvement and Attrition\
+
+Answer: 
 ```{r}
 employee_attrition_tbl %>%
   select(Attrition, contains("performance"), contains("involvement")) %>%
   plot_ggpairs(Attrition)
-
-# 6) a
 ```
 
-# 7. Work-Life Features: Over Time and Attrition
+7. Work-Life Features: Over Time and Attrition
+\
 
+Answer: 
 ```{r}
 employee_attrition_tbl %>%
   select(Attrition, contains("overtime"), contains("travel")) %>%
   plot_ggpairs(Attrition)
 
-# 7. b
 ```
 
-# 8. Training and Education: Training Times Last Year and Attrition
+8. Training and Education: Training Times Last Year and Attrition\
+
+Answer: 
 ```{r}
 employee_attrition_tbl %>%
     select(Attrition, contains("training"), contains("education")) %>%
     plot_ggpairs(Attrition)
-
-# 8) b
 ```
 
-# 9. Time-Based Features: Years At Company and Attrition
+9. Time-Based Features: Years At Company and Attrition\
+
+Answer: 
 ```{r}
 employee_attrition_tbl %>%
   select(Attrition, contains("years")) %>%
   plot_ggpairs(Attrition)
-# 9) b
 ```
 
-# 10. Time-Based Features: Years Since Last Promotion and Attrition
+10. Time-Based Features: Years Since Last Promotion and Attrition\
+
+Answer: 
 ```{r}
 employee_attrition_tbl %>%
   select(Attrition, contains("years")) %>%
   plot_ggpairs(Attrition)
-# 10) c
-
 ```

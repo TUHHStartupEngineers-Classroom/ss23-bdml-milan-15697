@@ -1,5 +1,5 @@
 ---
-title: "Session 6 - Challenge - Company Segmentation"
+title: "Challenge - Company Segmentation"
 author: "Milan Bhardwaj"
 
 date: "5/19/2023"
