@@ -14,18 +14,18 @@ website:
         text: Home
       - text: "Journal"
         menu: 
-          - text: "01 Company Segment"
+          - text: "01 Company Segment- Machine Learning Fundamentals"
             file: content/01_journal/01_Company_Segmentation.qmd
-          # - text: "02 --"
-          #   file: content/01_journal/02_Regression.qmd
-          - text: "03 H20"
+          - text: "02 Supervised ML - Regression (II)"
+            file: content/01_journal/02_Regression.qmd
+          - text: "03 Automated Machine Learning with H20 (I)"
             file: content/01_journal/03_h20.qmd
           # - text: "04 --"
           #   file: content/01_journal/04_data_visualization.qmd
-      - text: "Class notes"
-        file: content/02_notes/05_class_notes.qmd
-      - text: "Links"
-        file: content/03_other/06_links.qmd
+      # - text: "Class notes"
+      #   file: content/02_notes/05_class_notes.qmd
+      # - text: "Links"
+      #   file: content/03_other/06_links.qmd
 
 format:
   html:

@@ -1,12 +1,11 @@
 ---
 title: "Challenge - Automated Machine Learning with H2O"
 author: "Milan Bhardwaj"
+date: "5/30/2023"
 ---
 
 ```{r}
 library(h2o)
-
-# To launch H2O locally with default initialization arguments, use the following: 
 h2o.init()
 ```
 
@@ -35,15 +34,12 @@ dept_job_role_tbl %>%
 ```
 
 ```{r}
-# Attrition by department
 dept_job_role_tbl %>%
 
-  # Block 1
   group_by(Department, Attrition) %>%
   summarize(n = n()) %>%
   ungroup() %>%
 
-  # Block 2: Caution: It's easy to inadvertently miss grouping when creating counts & percents within groups
   group_by(Department) %>%
   mutate(pct = n / sum(n))
 ```
@@ -401,8 +397,6 @@ employee_attrition_tbl %>%
 Custom plotting function:
 
 ```{r}
-
-# Create data tibble, to potentially debug the plot_ggpairs function (because it has a data argument)
 data <- employee_attrition_tbl %>%
     select(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome)
 
@@ -435,7 +429,7 @@ employee_attrition_tbl %>%
     select(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome) %>%
     plot_ggpairs(color = Attrition)
 ```
-# Challenge:
+# Challenge Answers:
 1. Compensation features: MonthlyIncome and Attrition\
 
 Answer: C- Those that are leaving have a lower Monthly Income
