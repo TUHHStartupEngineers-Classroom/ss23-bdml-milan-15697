@@ -163,22 +163,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
         <li>
     <a class="dropdown-item" href="../../content/01_journal/01_Company_Segmentation.html">
- <span class="dropdown-text">01 Company Segment</span></a>
+ <span class="dropdown-text">01 Company Segment- Machine Learning Fundamentals</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/01_journal/02_Regression.html">
+ <span class="dropdown-text">02 Supervised ML - Regression (II)</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../../content/01_journal/03_h20.html">
- <span class="dropdown-text">03 H20</span></a>
+ <span class="dropdown-text">03 Automated Machine Learning with H20 (I)</span></a>
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../../content/02_notes/05_class_notes.html">
- <span class="menu-text">Class notes</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../content/03_other/06_links.html">
- <span class="menu-text">Links</span></a>
-  </li>  
 </ul>
               <div class="quarto-toggle-container">
                   <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -197,7 +193,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#challenge" id="toc-challenge" class="nav-link active" data-scroll-target="#challenge"><span class="toc-section-number">1</span>  Challenge:</a></li>
+  <li><a href="#challenge-answers" id="toc-challenge-answers" class="nav-link active" data-scroll-target="#challenge-answers"><span class="toc-section-number">1</span>  Challenge Answers:</a></li>
   </ul>
 </nav>
     </div>
@@ -233,53 +229,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-1_71a08db5a26d0b0a6178615cc5b2dc7c">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(h2o)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; 
-#&gt; ----------------------------------------------------------------------
-#&gt; 
-#&gt; Your next step is to start H2O:
-#&gt;     &gt; h2o.init()
-#&gt; 
-#&gt; For H2O package documentation, ask for help:
-#&gt;     &gt; ??h2o
-#&gt; 
-#&gt; After starting H2O, you can use the Web UI at http://localhost:54321
-#&gt; For more information visit https://docs.h2o.ai
-#&gt; 
-#&gt; ----------------------------------------------------------------------</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; 
-#&gt; Attaching package: 'h2o'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; The following objects are masked from 'package:stats':
-#&gt; 
-#&gt;     cor, sd, var</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; The following objects are masked from 'package:base':
-#&gt; 
-#&gt;     &amp;&amp;, %*%, %in%, ||, apply, as.factor, as.numeric, colnames,
-#&gt;     colnames&lt;-, ifelse, is.character, is.factor, is.numeric, log,
-#&gt;     log10, log1p, log2, round, signif, trunc</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># To launch H2O locally with default initialization arguments, use the following: </span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">h2o.init</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-1_b25ed4d0339e7fc1fc20260597a9ae7f">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(h2o)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">h2o.init</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt;  Connection successful!
+<pre><code>#&gt; 
+#&gt; H2O is not running yet, starting it now...
+#&gt; 
+#&gt; Note:  In case of errors look at the following log files:
+#&gt;     /var/folders/f_/3vvxb_bs6p3c7k7n066wwd5c0000gn/T//Rtmp7DKSOk/file7b8670e34dfb/h2o_milan_started_from_r.out
+#&gt;     /var/folders/f_/3vvxb_bs6p3c7k7n066wwd5c0000gn/T//Rtmp7DKSOk/file7b865b14d3a3/h2o_milan_started_from_r.err
+#&gt; 
+#&gt; 
+#&gt; Starting H2O JVM and connecting: ... Connection successful!
 #&gt; 
 #&gt; R is connected to the H2O cluster: 
-#&gt;     H2O cluster uptime:         7 hours 46 minutes 
+#&gt;     H2O cluster uptime:         3 seconds 16 milliseconds 
 #&gt;     H2O cluster timezone:       Europe/Berlin 
 #&gt;     H2O data parsing timezone:  UTC 
 #&gt;     H2O cluster version:        3.40.0.1 
-#&gt;     H2O cluster version age:    3 months and 12 days 
-#&gt;     H2O cluster name:           H2O_started_from_R_milan_rfz883 
+#&gt;     H2O cluster version age:    3 months and 25 days 
+#&gt;     H2O cluster name:           H2O_started_from_R_milan_qkr750 
 #&gt;     H2O cluster total nodes:    1 
-#&gt;     H2O cluster total memory:   1.98 GB 
+#&gt;     H2O cluster total memory:   2.00 GB 
 #&gt;     H2O cluster total cores:    8 
 #&gt;     H2O cluster allowed cores:  8 
 #&gt;     H2O cluster healthy:        TRUE 
@@ -291,13 +263,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Warning in h2o.clusterInfo(): 
-#&gt; Your H2O cluster version is (3 months and 12 days) old. There may be a newer version available.
+#&gt; Your H2O cluster version is (3 months and 25 days) old. There may be a newer version available.
 #&gt; Please download and install the latest version from: https://h2o-release.s3.amazonaws.com/h2o/latest_stable.html</code></pre>
 </div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-2_24774523e88093f1ca1dd18f887a5b58">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 #&gt; ✔ dplyr     1.1.2     ✔ purrr     1.0.1
@@ -316,7 +288,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-3_d742f1382d2eb7b25a217e6feef4d255">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>employee_attrition_tbl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../files/datasets-1067-1925-WA_Fn-UseC_-HR-Employee-Attrition.txt"</span>, )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>employee_attrition_tbl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../files/datasets-1067-1925-WA_Fn-UseC_-HR-Employee-Attrition.txt"</span>, )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Rows: 1470 Columns: 35
 #&gt; ── Column specification ────────────────────────────────────────────────────────
@@ -327,7 +299,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
 #&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>employee_attrition_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>employee_attrition_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -338,15 +310,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-4_2b1f13a70fa0b043ccd2fbfbba2765f1">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Data subset</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>dept_job_role_tbl <span class="ot">&lt;-</span> employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">select</span>(EmployeeNumber, Department, JobRole, PerformanceRating, Attrition)</span>
-<span id="cb14-4"><a href="#cb14-4"></a></span>
-<span id="cb14-5"><a href="#cb14-5"></a>dept_job_role_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">group_by</span>(Attrition) <span class="sc">%&gt;%</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb14-9"><a href="#cb14-9"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Data subset</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>dept_job_role_tbl <span class="ot">&lt;-</span> employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">select</span>(EmployeeNumber, Department, JobRole, PerformanceRating, Attrition)</span>
+<span id="cb9-4"><a href="#cb9-4"></a></span>
+<span id="cb9-5"><a href="#cb9-5"></a>dept_job_role_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">group_by</span>(Attrition) <span class="sc">%&gt;%</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -356,18 +328,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-5_2ad6acff45756132f3850da84803d709">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Attrition by department</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>dept_job_role_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a>  <span class="co"># Block 1</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">group_by</span>(Department, Attrition) <span class="sc">%&gt;%</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb15-8"><a href="#cb15-8"></a></span>
-<span id="cb15-9"><a href="#cb15-9"></a>  <span class="co"># Block 2: Caution: It's easy to inadvertently miss grouping when creating counts &amp; percents within groups</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a>  <span class="fu">group_by</span>(Department) <span class="sc">%&gt;%</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-5_94d66ee8e4851951d1c37fa6ea70b753">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>dept_job_role_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">group_by</span>(Department, Attrition) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a>  <span class="fu">group_by</span>(Department) <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; `summarise()` has grouped output by 'Department'. You can override using the
 #&gt; `.groups` argument.</code></pre>
@@ -382,28 +351,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-6_18eb991553d862069b455deb224e2b44">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Attrition by job role</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>dept_job_role_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a></span>
-<span id="cb17-4"><a href="#cb17-4"></a>  <span class="co"># Block 1</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a>  <span class="fu">group_by</span>(Department, JobRole, Attrition) <span class="sc">%&gt;%</span></span>
-<span id="cb17-6"><a href="#cb17-6"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb17-7"><a href="#cb17-7"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb17-8"><a href="#cb17-8"></a></span>
-<span id="cb17-9"><a href="#cb17-9"></a>  <span class="co"># Block 2</span></span>
-<span id="cb17-10"><a href="#cb17-10"></a>  <span class="fu">group_by</span>(Department, JobRole) <span class="sc">%&gt;%</span></span>
-<span id="cb17-11"><a href="#cb17-11"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-12"><a href="#cb17-12"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb17-13"><a href="#cb17-13"></a></span>
-<span id="cb17-14"><a href="#cb17-14"></a>  <span class="co"># Block 3</span></span>
-<span id="cb17-15"><a href="#cb17-15"></a>  <span class="fu">filter</span>(Attrition <span class="sc">%in%</span> <span class="st">"Yes"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-16"><a href="#cb17-16"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(pct)) <span class="sc">%&gt;%</span></span>
-<span id="cb17-17"><a href="#cb17-17"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb17-18"><a href="#cb17-18"></a>    <span class="at">above_industry_avg =</span> <span class="fu">case_when</span>(</span>
-<span id="cb17-19"><a href="#cb17-19"></a>      pct <span class="sc">&gt;</span> <span class="fl">0.088</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
-<span id="cb17-20"><a href="#cb17-20"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"No"</span></span>
-<span id="cb17-21"><a href="#cb17-21"></a>    )</span>
-<span id="cb17-22"><a href="#cb17-22"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Attrition by job role</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>dept_job_role_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="co"># Block 1</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">group_by</span>(Department, JobRole, Attrition) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a></span>
+<span id="cb12-9"><a href="#cb12-9"></a>  <span class="co"># Block 2</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a>  <span class="fu">group_by</span>(Department, JobRole) <span class="sc">%&gt;%</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a></span>
+<span id="cb12-14"><a href="#cb12-14"></a>  <span class="co"># Block 3</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a>  <span class="fu">filter</span>(Attrition <span class="sc">%in%</span> <span class="st">"Yes"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(pct)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-17"><a href="#cb12-17"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-18"><a href="#cb12-18"></a>    <span class="at">above_industry_avg =</span> <span class="fu">case_when</span>(</span>
+<span id="cb12-19"><a href="#cb12-19"></a>      pct <span class="sc">&gt;</span> <span class="fl">0.088</span> <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb12-20"><a href="#cb12-20"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"No"</span></span>
+<span id="cb12-21"><a href="#cb12-21"></a>    )</span>
+<span id="cb12-22"><a href="#cb12-22"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; `summarise()` has grouped output by 'Department', 'JobRole'. You can override
 #&gt; using the `.groups` argument.</code></pre>
@@ -418,131 +387,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-7_582ae56d233c75f9905a12c36dd72ab5">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Function to calculate attrition cost</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>calculate_attrition_cost <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
-<span id="cb19-3"><a href="#cb19-3"></a></span>
-<span id="cb19-4"><a href="#cb19-4"></a>  <span class="co"># Employee</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a>  <span class="at">n                    =</span> <span class="dv">1</span>,</span>
-<span id="cb19-6"><a href="#cb19-6"></a>  <span class="at">salary               =</span> <span class="dv">80000</span>,</span>
-<span id="cb19-7"><a href="#cb19-7"></a></span>
-<span id="cb19-8"><a href="#cb19-8"></a>  <span class="co"># Direct Costs</span></span>
-<span id="cb19-9"><a href="#cb19-9"></a>  <span class="at">separation_cost      =</span> <span class="dv">500</span>,</span>
-<span id="cb19-10"><a href="#cb19-10"></a>  <span class="at">vacancy_cost         =</span> <span class="dv">10000</span>,</span>
-<span id="cb19-11"><a href="#cb19-11"></a>  <span class="at">acquisition_cost     =</span> <span class="dv">4900</span>,</span>
-<span id="cb19-12"><a href="#cb19-12"></a>  <span class="at">placement_cost       =</span> <span class="dv">3500</span>,</span>
-<span id="cb19-13"><a href="#cb19-13"></a></span>
-<span id="cb19-14"><a href="#cb19-14"></a>  <span class="co"># Productivity Costs</span></span>
-<span id="cb19-15"><a href="#cb19-15"></a>  <span class="at">net_revenue_per_employee =</span> <span class="dv">250000</span>,</span>
-<span id="cb19-16"><a href="#cb19-16"></a>  <span class="at">workdays_per_year        =</span> <span class="dv">240</span>,</span>
-<span id="cb19-17"><a href="#cb19-17"></a>  <span class="at">workdays_position_open   =</span> <span class="dv">40</span>,</span>
-<span id="cb19-18"><a href="#cb19-18"></a>  <span class="at">workdays_onboarding      =</span> <span class="dv">60</span>,</span>
-<span id="cb19-19"><a href="#cb19-19"></a>  <span class="at">onboarding_efficiency    =</span> <span class="fl">0.50</span></span>
-<span id="cb19-20"><a href="#cb19-20"></a></span>
-<span id="cb19-21"><a href="#cb19-21"></a>) {</span>
-<span id="cb19-22"><a href="#cb19-22"></a></span>
-<span id="cb19-23"><a href="#cb19-23"></a>  <span class="co"># Direct Costs</span></span>
-<span id="cb19-24"><a href="#cb19-24"></a>  direct_cost <span class="ot">&lt;-</span> <span class="fu">sum</span>(separation_cost, vacancy_cost, acquisition_cost, placement_cost)</span>
-<span id="cb19-25"><a href="#cb19-25"></a></span>
-<span id="cb19-26"><a href="#cb19-26"></a>  <span class="co"># Lost Productivity Costs</span></span>
-<span id="cb19-27"><a href="#cb19-27"></a>  productivity_cost <span class="ot">&lt;-</span> net_revenue_per_employee <span class="sc">/</span> workdays_per_year <span class="sc">*</span></span>
-<span id="cb19-28"><a href="#cb19-28"></a>    (workdays_position_open <span class="sc">+</span> workdays_onboarding <span class="sc">*</span> onboarding_efficiency)</span>
-<span id="cb19-29"><a href="#cb19-29"></a></span>
-<span id="cb19-30"><a href="#cb19-30"></a>  <span class="co"># Savings of Salary &amp; Benefits (Cost Reduction)</span></span>
-<span id="cb19-31"><a href="#cb19-31"></a>  salary_benefit_reduction <span class="ot">&lt;-</span> salary <span class="sc">/</span> workdays_per_year <span class="sc">*</span> workdays_position_open</span>
-<span id="cb19-32"><a href="#cb19-32"></a></span>
-<span id="cb19-33"><a href="#cb19-33"></a>  <span class="co"># Estimated Turnover Per Employee</span></span>
-<span id="cb19-34"><a href="#cb19-34"></a>  cost_per_employee <span class="ot">&lt;-</span> direct_cost <span class="sc">+</span> productivity_cost <span class="sc">-</span> salary_benefit_reduction</span>
-<span id="cb19-35"><a href="#cb19-35"></a></span>
-<span id="cb19-36"><a href="#cb19-36"></a>  <span class="co"># Total Cost of Employee Turnover</span></span>
-<span id="cb19-37"><a href="#cb19-37"></a>  total_cost <span class="ot">&lt;-</span> n <span class="sc">*</span> cost_per_employee</span>
-<span id="cb19-38"><a href="#cb19-38"></a></span>
-<span id="cb19-39"><a href="#cb19-39"></a>  <span class="fu">return</span>(total_cost)</span>
-<span id="cb19-40"><a href="#cb19-40"></a></span>
-<span id="cb19-41"><a href="#cb19-41"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Function to calculate attrition cost</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>calculate_attrition_cost <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="co"># Employee</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="at">n                    =</span> <span class="dv">1</span>,</span>
+<span id="cb14-6"><a href="#cb14-6"></a>  <span class="at">salary               =</span> <span class="dv">80000</span>,</span>
+<span id="cb14-7"><a href="#cb14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8"></a>  <span class="co"># Direct Costs</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>  <span class="at">separation_cost      =</span> <span class="dv">500</span>,</span>
+<span id="cb14-10"><a href="#cb14-10"></a>  <span class="at">vacancy_cost         =</span> <span class="dv">10000</span>,</span>
+<span id="cb14-11"><a href="#cb14-11"></a>  <span class="at">acquisition_cost     =</span> <span class="dv">4900</span>,</span>
+<span id="cb14-12"><a href="#cb14-12"></a>  <span class="at">placement_cost       =</span> <span class="dv">3500</span>,</span>
+<span id="cb14-13"><a href="#cb14-13"></a></span>
+<span id="cb14-14"><a href="#cb14-14"></a>  <span class="co"># Productivity Costs</span></span>
+<span id="cb14-15"><a href="#cb14-15"></a>  <span class="at">net_revenue_per_employee =</span> <span class="dv">250000</span>,</span>
+<span id="cb14-16"><a href="#cb14-16"></a>  <span class="at">workdays_per_year        =</span> <span class="dv">240</span>,</span>
+<span id="cb14-17"><a href="#cb14-17"></a>  <span class="at">workdays_position_open   =</span> <span class="dv">40</span>,</span>
+<span id="cb14-18"><a href="#cb14-18"></a>  <span class="at">workdays_onboarding      =</span> <span class="dv">60</span>,</span>
+<span id="cb14-19"><a href="#cb14-19"></a>  <span class="at">onboarding_efficiency    =</span> <span class="fl">0.50</span></span>
+<span id="cb14-20"><a href="#cb14-20"></a></span>
+<span id="cb14-21"><a href="#cb14-21"></a>) {</span>
+<span id="cb14-22"><a href="#cb14-22"></a></span>
+<span id="cb14-23"><a href="#cb14-23"></a>  <span class="co"># Direct Costs</span></span>
+<span id="cb14-24"><a href="#cb14-24"></a>  direct_cost <span class="ot">&lt;-</span> <span class="fu">sum</span>(separation_cost, vacancy_cost, acquisition_cost, placement_cost)</span>
+<span id="cb14-25"><a href="#cb14-25"></a></span>
+<span id="cb14-26"><a href="#cb14-26"></a>  <span class="co"># Lost Productivity Costs</span></span>
+<span id="cb14-27"><a href="#cb14-27"></a>  productivity_cost <span class="ot">&lt;-</span> net_revenue_per_employee <span class="sc">/</span> workdays_per_year <span class="sc">*</span></span>
+<span id="cb14-28"><a href="#cb14-28"></a>    (workdays_position_open <span class="sc">+</span> workdays_onboarding <span class="sc">*</span> onboarding_efficiency)</span>
+<span id="cb14-29"><a href="#cb14-29"></a></span>
+<span id="cb14-30"><a href="#cb14-30"></a>  <span class="co"># Savings of Salary &amp; Benefits (Cost Reduction)</span></span>
+<span id="cb14-31"><a href="#cb14-31"></a>  salary_benefit_reduction <span class="ot">&lt;-</span> salary <span class="sc">/</span> workdays_per_year <span class="sc">*</span> workdays_position_open</span>
+<span id="cb14-32"><a href="#cb14-32"></a></span>
+<span id="cb14-33"><a href="#cb14-33"></a>  <span class="co"># Estimated Turnover Per Employee</span></span>
+<span id="cb14-34"><a href="#cb14-34"></a>  cost_per_employee <span class="ot">&lt;-</span> direct_cost <span class="sc">+</span> productivity_cost <span class="sc">-</span> salary_benefit_reduction</span>
+<span id="cb14-35"><a href="#cb14-35"></a></span>
+<span id="cb14-36"><a href="#cb14-36"></a>  <span class="co"># Total Cost of Employee Turnover</span></span>
+<span id="cb14-37"><a href="#cb14-37"></a>  total_cost <span class="ot">&lt;-</span> n <span class="sc">*</span> cost_per_employee</span>
+<span id="cb14-38"><a href="#cb14-38"></a></span>
+<span id="cb14-39"><a href="#cb14-39"></a>  <span class="fu">return</span>(total_cost)</span>
+<span id="cb14-40"><a href="#cb14-40"></a></span>
+<span id="cb14-41"><a href="#cb14-41"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-8_03b2660d8ada79215e48772e1b90d8ab">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">calculate_attrition_cost</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">calculate_attrition_cost</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 78483.33</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">calculate_attrition_cost</span>(<span class="dv">150</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">calculate_attrition_cost</span>(<span class="dv">150</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 11772500</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">calculate_attrition_cost</span>(<span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">calculate_attrition_cost</span>(<span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; [1] 15696667</code></pre>
 </div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-9_25568eae5af132fa9407e392aa505da3">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>count_to_pct <span class="ot">&lt;-</span> <span class="cf">function</span>(data, ..., <span class="at">col =</span> n) {</span>
-<span id="cb26-2"><a href="#cb26-2"></a></span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="co"># capture the dots</span></span>
-<span id="cb26-4"><a href="#cb26-4"></a>  grouping_vars_expr <span class="ot">&lt;-</span> <span class="fu">quos</span>(...)</span>
-<span id="cb26-5"><a href="#cb26-5"></a>  col_expr <span class="ot">&lt;-</span> <span class="fu">enquo</span>(col)</span>
-<span id="cb26-6"><a href="#cb26-6"></a></span>
-<span id="cb26-7"><a href="#cb26-7"></a>  ret <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb26-8"><a href="#cb26-8"></a>    <span class="fu">group_by</span>(<span class="sc">!!!</span> grouping_vars_expr) <span class="sc">%&gt;%</span></span>
-<span id="cb26-9"><a href="#cb26-9"></a>    <span class="fu">mutate</span>(<span class="at">pct =</span> (<span class="sc">!!</span> col_expr) <span class="sc">/</span> <span class="fu">sum</span>(<span class="sc">!!</span> col_expr)) <span class="sc">%&gt;%</span></span>
-<span id="cb26-10"><a href="#cb26-10"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb26-11"><a href="#cb26-11"></a></span>
-<span id="cb26-12"><a href="#cb26-12"></a>  <span class="fu">return</span>(ret)</span>
-<span id="cb26-13"><a href="#cb26-13"></a></span>
-<span id="cb26-14"><a href="#cb26-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>count_to_pct <span class="ot">&lt;-</span> <span class="cf">function</span>(data, ..., <span class="at">col =</span> n) {</span>
+<span id="cb21-2"><a href="#cb21-2"></a></span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="co"># capture the dots</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>  grouping_vars_expr <span class="ot">&lt;-</span> <span class="fu">quos</span>(...)</span>
+<span id="cb21-5"><a href="#cb21-5"></a>  col_expr <span class="ot">&lt;-</span> <span class="fu">enquo</span>(col)</span>
+<span id="cb21-6"><a href="#cb21-6"></a></span>
+<span id="cb21-7"><a href="#cb21-7"></a>  ret <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a>    <span class="fu">group_by</span>(<span class="sc">!!!</span> grouping_vars_expr) <span class="sc">%&gt;%</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>    <span class="fu">mutate</span>(<span class="at">pct =</span> (<span class="sc">!!</span> col_expr) <span class="sc">/</span> <span class="fu">sum</span>(<span class="sc">!!</span> col_expr)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb21-11"><a href="#cb21-11"></a></span>
+<span id="cb21-12"><a href="#cb21-12"></a>  <span class="fu">return</span>(ret)</span>
+<span id="cb21-13"><a href="#cb21-13"></a></span>
+<span id="cb21-14"><a href="#cb21-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-10_d453e126391c4a324d257cfee4547194">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>assess_attrition <span class="ot">&lt;-</span> <span class="cf">function</span>(data, attrition_col, attrition_value, baseline_pct) {</span>
-<span id="cb27-2"><a href="#cb27-2"></a></span>
-<span id="cb27-3"><a href="#cb27-3"></a>  attrition_col_expr <span class="ot">&lt;-</span> <span class="fu">enquo</span>(attrition_col)</span>
-<span id="cb27-4"><a href="#cb27-4"></a></span>
-<span id="cb27-5"><a href="#cb27-5"></a>  data <span class="sc">%&gt;%</span></span>
-<span id="cb27-6"><a href="#cb27-6"></a>  </span>
-<span id="cb27-7"><a href="#cb27-7"></a>    <span class="co"># Use parenthesis () to give tidy eval evaluation priority</span></span>
-<span id="cb27-8"><a href="#cb27-8"></a>    <span class="fu">filter</span>((<span class="sc">!!</span> attrition_col_expr) <span class="sc">%in%</span> attrition_value) <span class="sc">%&gt;%</span></span>
-<span id="cb27-9"><a href="#cb27-9"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(pct)) <span class="sc">%&gt;%</span></span>
-<span id="cb27-10"><a href="#cb27-10"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb27-11"><a href="#cb27-11"></a>      <span class="co"># Function inputs in numeric format (e.g. baseline_pct = 0.088 don't require tidy eval)</span></span>
-<span id="cb27-12"><a href="#cb27-12"></a>      <span class="at">above_industry_avg =</span> <span class="fu">case_when</span>(</span>
-<span id="cb27-13"><a href="#cb27-13"></a>        pct <span class="sc">&gt;</span> baseline_pct <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
-<span id="cb27-14"><a href="#cb27-14"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"No"</span></span>
-<span id="cb27-15"><a href="#cb27-15"></a>      )</span>
-<span id="cb27-16"><a href="#cb27-16"></a>    )</span>
-<span id="cb27-17"><a href="#cb27-17"></a></span>
-<span id="cb27-18"><a href="#cb27-18"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>assess_attrition <span class="ot">&lt;-</span> <span class="cf">function</span>(data, attrition_col, attrition_value, baseline_pct) {</span>
+<span id="cb22-2"><a href="#cb22-2"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a>  attrition_col_expr <span class="ot">&lt;-</span> <span class="fu">enquo</span>(attrition_col)</span>
+<span id="cb22-4"><a href="#cb22-4"></a></span>
+<span id="cb22-5"><a href="#cb22-5"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a>  </span>
+<span id="cb22-7"><a href="#cb22-7"></a>    <span class="co"># Use parenthesis () to give tidy eval evaluation priority</span></span>
+<span id="cb22-8"><a href="#cb22-8"></a>    <span class="fu">filter</span>((<span class="sc">!!</span> attrition_col_expr) <span class="sc">%in%</span> attrition_value) <span class="sc">%&gt;%</span></span>
+<span id="cb22-9"><a href="#cb22-9"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(pct)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-10"><a href="#cb22-10"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb22-11"><a href="#cb22-11"></a>      <span class="co"># Function inputs in numeric format (e.g. baseline_pct = 0.088 don't require tidy eval)</span></span>
+<span id="cb22-12"><a href="#cb22-12"></a>      <span class="at">above_industry_avg =</span> <span class="fu">case_when</span>(</span>
+<span id="cb22-13"><a href="#cb22-13"></a>        pct <span class="sc">&gt;</span> baseline_pct <span class="sc">~</span> <span class="st">"Yes"</span>,</span>
+<span id="cb22-14"><a href="#cb22-14"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"No"</span></span>
+<span id="cb22-15"><a href="#cb22-15"></a>      )</span>
+<span id="cb22-16"><a href="#cb22-16"></a>    )</span>
+<span id="cb22-17"><a href="#cb22-17"></a></span>
+<span id="cb22-18"><a href="#cb22-18"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-11_0b62caf7c8462aa764503334644e21f5">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>dept_job_role_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a></span>
-<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">count</span>(Department, JobRole, Attrition) <span class="sc">%&gt;%</span></span>
-<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">count_to_pct</span>(Department, JobRole) <span class="sc">%&gt;%</span></span>
-<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">assess_attrition</span>(Attrition, <span class="at">attrition_value =</span> <span class="st">"Yes"</span>, <span class="at">baseline_pct =</span> <span class="fl">0.088</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb28-6"><a href="#cb28-6"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb28-7"><a href="#cb28-7"></a>    <span class="at">cost_of_attrition =</span> <span class="fu">calculate_attrition_cost</span>(<span class="at">n =</span> n, <span class="at">salary =</span> <span class="dv">80000</span>)</span>
-<span id="cb28-8"><a href="#cb28-8"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb28-9"><a href="#cb28-9"></a></span>
-<span id="cb28-10"><a href="#cb28-10"></a><span class="co"># Data Manipulation</span></span>
-<span id="cb28-11"><a href="#cb28-11"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_c</span>(Department, JobRole, <span class="at">sep =</span> <span class="st">": "</span>) <span class="sc">%&gt;%</span> <span class="fu">as_factor</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb28-12"><a href="#cb28-12"></a></span>
-<span id="cb28-13"><a href="#cb28-13"></a>  <span class="co"># Check levels</span></span>
-<span id="cb28-14"><a href="#cb28-14"></a>  <span class="co"># pull(name) %&gt;%</span></span>
-<span id="cb28-15"><a href="#cb28-15"></a>  <span class="co"># levels()</span></span>
-<span id="cb28-16"><a href="#cb28-16"></a></span>
-<span id="cb28-17"><a href="#cb28-17"></a>  <span class="fu">mutate</span>(<span class="at">name      =</span> <span class="fu">fct_reorder</span>(name, cost_of_attrition)) <span class="sc">%&gt;%</span></span>
-<span id="cb28-18"><a href="#cb28-18"></a>  <span class="fu">mutate</span>(<span class="at">cost_text =</span> <span class="fu">str_c</span>(<span class="st">"$"</span>, <span class="fu">format</span>(cost_of_attrition <span class="sc">/</span> <span class="fl">1e6</span>, <span class="at">digits =</span> <span class="dv">2</span>),</span>
-<span id="cb28-19"><a href="#cb28-19"></a>                           <span class="st">"M"</span>, <span class="at">sep =</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb28-20"><a href="#cb28-20"></a></span>
-<span id="cb28-21"><a href="#cb28-21"></a>  <span class="co">#Plotting</span></span>
-<span id="cb28-22"><a href="#cb28-22"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(cost_of_attrition, <span class="at">y =</span> name)) <span class="sc">+</span></span>
-<span id="cb28-23"><a href="#cb28-23"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> <span class="dv">0</span>, <span class="at">yend =</span> name),    <span class="at">color =</span> <span class="st">"#2dc6d6"</span>) <span class="sc">+</span></span>
-<span id="cb28-24"><a href="#cb28-24"></a>  <span class="fu">geom_point</span>(  <span class="fu">aes</span>(<span class="at">size =</span> cost_of_attrition), <span class="at">color =</span> <span class="st">"#2dc6d6"</span>) <span class="sc">+</span></span>
-<span id="cb28-25"><a href="#cb28-25"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar) <span class="sc">+</span></span>
-<span id="cb28-26"><a href="#cb28-26"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> cost_text, <span class="at">size =</span> cost_of_attrition),</span>
-<span id="cb28-27"><a href="#cb28-27"></a>             <span class="at">hjust =</span> <span class="st">"inward"</span>, <span class="at">color =</span> <span class="st">"#2dc6d6"</span>) <span class="sc">+</span></span>
-<span id="cb28-28"><a href="#cb28-28"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>)) <span class="sc">+</span></span>
-<span id="cb28-29"><a href="#cb28-29"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Estimated cost of Attrition: By Dept and Job Role"</span>,</span>
-<span id="cb28-30"><a href="#cb28-30"></a>       <span class="at">y =</span> <span class="st">""</span>,</span>
-<span id="cb28-31"><a href="#cb28-31"></a>       <span class="at">x =</span> <span class="st">"Cost of attrition"</span>) <span class="sc">+</span></span>
-<span id="cb28-32"><a href="#cb28-32"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>dept_job_role_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">count</span>(Department, JobRole, Attrition) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">count_to_pct</span>(Department, JobRole) <span class="sc">%&gt;%</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="fu">assess_attrition</span>(Attrition, <span class="at">attrition_value =</span> <span class="st">"Yes"</span>, <span class="at">baseline_pct =</span> <span class="fl">0.088</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb23-7"><a href="#cb23-7"></a>    <span class="at">cost_of_attrition =</span> <span class="fu">calculate_attrition_cost</span>(<span class="at">n =</span> n, <span class="at">salary =</span> <span class="dv">80000</span>)</span>
+<span id="cb23-8"><a href="#cb23-8"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a></span>
+<span id="cb23-10"><a href="#cb23-10"></a><span class="co"># Data Manipulation</span></span>
+<span id="cb23-11"><a href="#cb23-11"></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_c</span>(Department, JobRole, <span class="at">sep =</span> <span class="st">": "</span>) <span class="sc">%&gt;%</span> <span class="fu">as_factor</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb23-12"><a href="#cb23-12"></a></span>
+<span id="cb23-13"><a href="#cb23-13"></a>  <span class="co"># Check levels</span></span>
+<span id="cb23-14"><a href="#cb23-14"></a>  <span class="co"># pull(name) %&gt;%</span></span>
+<span id="cb23-15"><a href="#cb23-15"></a>  <span class="co"># levels()</span></span>
+<span id="cb23-16"><a href="#cb23-16"></a></span>
+<span id="cb23-17"><a href="#cb23-17"></a>  <span class="fu">mutate</span>(<span class="at">name      =</span> <span class="fu">fct_reorder</span>(name, cost_of_attrition)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-18"><a href="#cb23-18"></a>  <span class="fu">mutate</span>(<span class="at">cost_text =</span> <span class="fu">str_c</span>(<span class="st">"$"</span>, <span class="fu">format</span>(cost_of_attrition <span class="sc">/</span> <span class="fl">1e6</span>, <span class="at">digits =</span> <span class="dv">2</span>),</span>
+<span id="cb23-19"><a href="#cb23-19"></a>                           <span class="st">"M"</span>, <span class="at">sep =</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-20"><a href="#cb23-20"></a></span>
+<span id="cb23-21"><a href="#cb23-21"></a>  <span class="co">#Plotting</span></span>
+<span id="cb23-22"><a href="#cb23-22"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(cost_of_attrition, <span class="at">y =</span> name)) <span class="sc">+</span></span>
+<span id="cb23-23"><a href="#cb23-23"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> <span class="dv">0</span>, <span class="at">yend =</span> name),    <span class="at">color =</span> <span class="st">"#2dc6d6"</span>) <span class="sc">+</span></span>
+<span id="cb23-24"><a href="#cb23-24"></a>  <span class="fu">geom_point</span>(  <span class="fu">aes</span>(<span class="at">size =</span> cost_of_attrition), <span class="at">color =</span> <span class="st">"#2dc6d6"</span>) <span class="sc">+</span></span>
+<span id="cb23-25"><a href="#cb23-25"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar) <span class="sc">+</span></span>
+<span id="cb23-26"><a href="#cb23-26"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> cost_text, <span class="at">size =</span> cost_of_attrition),</span>
+<span id="cb23-27"><a href="#cb23-27"></a>             <span class="at">hjust =</span> <span class="st">"inward"</span>, <span class="at">color =</span> <span class="st">"#2dc6d6"</span>) <span class="sc">+</span></span>
+<span id="cb23-28"><a href="#cb23-28"></a>  <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>)) <span class="sc">+</span></span>
+<span id="cb23-29"><a href="#cb23-29"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Estimated cost of Attrition: By Dept and Job Role"</span>,</span>
+<span id="cb23-30"><a href="#cb23-30"></a>       <span class="at">y =</span> <span class="st">""</span>,</span>
+<span id="cb23-31"><a href="#cb23-31"></a>       <span class="at">x =</span> <span class="st">"Cost of attrition"</span>) <span class="sc">+</span></span>
+<span id="cb23-32"><a href="#cb23-32"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -552,99 +521,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-12_20b9a3b7fbec71fc188be0718f5c514f">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Function to plot attrition</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>plot_attrition <span class="ot">&lt;-</span> <span class="cf">function</span>(data, </span>
-<span id="cb29-3"><a href="#cb29-3"></a>                           ..., </span>
-<span id="cb29-4"><a href="#cb29-4"></a>                           .value,</span>
-<span id="cb29-5"><a href="#cb29-5"></a>                           <span class="at">fct_reorder =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb29-6"><a href="#cb29-6"></a>                           <span class="at">fct_rev     =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb29-7"><a href="#cb29-7"></a>                           <span class="at">include_lbl =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb29-8"><a href="#cb29-8"></a>                           <span class="at">color       =</span> <span class="st">"#2dc6d6"</span>,</span>
-<span id="cb29-9"><a href="#cb29-9"></a>                           <span class="at">units       =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"K"</span>, <span class="st">"M"</span>)) {</span>
-<span id="cb29-10"><a href="#cb29-10"></a></span>
-<span id="cb29-11"><a href="#cb29-11"></a>  <span class="do">### Inputs</span></span>
-<span id="cb29-12"><a href="#cb29-12"></a>  group_vars_expr   <span class="ot">&lt;-</span> <span class="fu">quos</span>(...)</span>
-<span id="cb29-13"><a href="#cb29-13"></a>  </span>
-<span id="cb29-14"><a href="#cb29-14"></a>  <span class="co"># If the user does not supply anything, </span></span>
-<span id="cb29-15"><a href="#cb29-15"></a>  <span class="co"># this takes the first column of the supplied data</span></span>
-<span id="cb29-16"><a href="#cb29-16"></a>  <span class="cf">if</span> (<span class="fu">length</span>(group_vars_expr) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb29-17"><a href="#cb29-17"></a>    group_vars_expr <span class="ot">&lt;-</span> <span class="fu">quos</span>(rlang<span class="sc">::</span><span class="fu">sym</span>(<span class="fu">colnames</span>(data)[[<span class="dv">1</span>]]))</span>
-<span id="cb29-18"><a href="#cb29-18"></a>    }</span>
-<span id="cb29-19"><a href="#cb29-19"></a></span>
-<span id="cb29-20"><a href="#cb29-20"></a>  value_expr <span class="ot">&lt;-</span> <span class="fu">enquo</span>(.value)</span>
-<span id="cb29-21"><a href="#cb29-21"></a></span>
-<span id="cb29-22"><a href="#cb29-22"></a>  units_val  <span class="ot">&lt;-</span> <span class="cf">switch</span>(units[[<span class="dv">1</span>]],</span>
-<span id="cb29-23"><a href="#cb29-23"></a>                       <span class="st">"M"</span> <span class="ot">=</span> <span class="fl">1e6</span>,</span>
-<span id="cb29-24"><a href="#cb29-24"></a>                       <span class="st">"K"</span> <span class="ot">=</span> <span class="fl">1e3</span>,</span>
-<span id="cb29-25"><a href="#cb29-25"></a>                       <span class="st">"0"</span> <span class="ot">=</span> <span class="dv">1</span>)</span>
-<span id="cb29-26"><a href="#cb29-26"></a>  <span class="cf">if</span> (units[[<span class="dv">1</span>]] <span class="sc">==</span> <span class="st">"0"</span>) units <span class="ot">&lt;-</span> <span class="st">""</span></span>
-<span id="cb29-27"><a href="#cb29-27"></a></span>
-<span id="cb29-28"><a href="#cb29-28"></a>  <span class="co"># Data Manipulation</span></span>
-<span id="cb29-29"><a href="#cb29-29"></a>  <span class="co"># This is a so called Function Factory (a function that produces a function)</span></span>
-<span id="cb29-30"><a href="#cb29-30"></a>  usd <span class="ot">&lt;-</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">"$"</span>, <span class="at">largest_with_cents =</span> <span class="fl">1e3</span>)</span>
-<span id="cb29-31"><a href="#cb29-31"></a></span>
-<span id="cb29-32"><a href="#cb29-32"></a>  <span class="co"># Create the axis labels and values for the plot</span></span>
-<span id="cb29-33"><a href="#cb29-33"></a>  data_manipulated <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb29-34"><a href="#cb29-34"></a>    <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_c</span>(<span class="sc">!!!</span> group_vars_expr, <span class="at">sep =</span> <span class="st">": "</span>) <span class="sc">%&gt;%</span> <span class="fu">as_factor</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb29-35"><a href="#cb29-35"></a>    <span class="fu">mutate</span>(<span class="at">value_text =</span> <span class="fu">str_c</span>(<span class="fu">usd</span>(<span class="sc">!!</span> value_expr <span class="sc">/</span> units_val),</span>
-<span id="cb29-36"><a href="#cb29-36"></a>                              units[[<span class="dv">1</span>]], <span class="at">sep =</span> <span class="st">""</span>))</span>
-<span id="cb29-37"><a href="#cb29-37"></a></span>
-<span id="cb29-38"><a href="#cb29-38"></a>  </span>
-<span id="cb29-39"><a href="#cb29-39"></a>  <span class="co"># Order the labels on the y-axis according to the input</span></span>
-<span id="cb29-40"><a href="#cb29-40"></a>  <span class="cf">if</span> (fct_reorder) {</span>
-<span id="cb29-41"><a href="#cb29-41"></a>    data_manipulated <span class="ot">&lt;-</span> data_manipulated <span class="sc">%&gt;%</span></span>
-<span id="cb29-42"><a href="#cb29-42"></a>      <span class="fu">mutate</span>(<span class="at">name =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(name, <span class="sc">!!</span> value_expr)) <span class="sc">%&gt;%</span></span>
-<span id="cb29-43"><a href="#cb29-43"></a>      <span class="fu">arrange</span>(name)</span>
-<span id="cb29-44"><a href="#cb29-44"></a>  }</span>
-<span id="cb29-45"><a href="#cb29-45"></a></span>
-<span id="cb29-46"><a href="#cb29-46"></a>  <span class="cf">if</span> (fct_rev) {</span>
-<span id="cb29-47"><a href="#cb29-47"></a>    data_manipulated <span class="ot">&lt;-</span> data_manipulated <span class="sc">%&gt;%</span></span>
-<span id="cb29-48"><a href="#cb29-48"></a>      <span class="fu">mutate</span>(<span class="at">name =</span> forcats<span class="sc">::</span><span class="fu">fct_rev</span>(name)) <span class="sc">%&gt;%</span></span>
-<span id="cb29-49"><a href="#cb29-49"></a>      <span class="fu">arrange</span>(name)</span>
-<span id="cb29-50"><a href="#cb29-50"></a>  }</span>
-<span id="cb29-51"><a href="#cb29-51"></a></span>
-<span id="cb29-52"><a href="#cb29-52"></a>  <span class="co"># Visualization</span></span>
-<span id="cb29-53"><a href="#cb29-53"></a>  g <span class="ot">&lt;-</span> data_manipulated <span class="sc">%&gt;%</span></span>
-<span id="cb29-54"><a href="#cb29-54"></a></span>
-<span id="cb29-55"><a href="#cb29-55"></a>        <span class="co"># "name" is a column name generated by our function internally as part of the data manipulation task</span></span>
-<span id="cb29-56"><a href="#cb29-56"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> (<span class="sc">!!</span> value_expr), <span class="at">y =</span> name)) <span class="sc">+</span></span>
-<span id="cb29-57"><a href="#cb29-57"></a>        <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> <span class="dv">0</span>, <span class="at">yend =</span> name), <span class="at">color =</span> color) <span class="sc">+</span></span>
-<span id="cb29-58"><a href="#cb29-58"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> <span class="sc">!!</span> value_expr), <span class="at">color =</span> color) <span class="sc">+</span></span>
-<span id="cb29-59"><a href="#cb29-59"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar) <span class="sc">+</span></span>
-<span id="cb29-60"><a href="#cb29-60"></a>        <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>)) <span class="sc">+</span></span>
-<span id="cb29-61"><a href="#cb29-61"></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
-<span id="cb29-62"><a href="#cb29-62"></a></span>
-<span id="cb29-63"><a href="#cb29-63"></a>  <span class="co"># Plot labels if TRUE</span></span>
-<span id="cb29-64"><a href="#cb29-64"></a>  <span class="cf">if</span> (include_lbl) {</span>
-<span id="cb29-65"><a href="#cb29-65"></a>    g <span class="ot">&lt;-</span> g <span class="sc">+</span></span>
-<span id="cb29-66"><a href="#cb29-66"></a>      <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> value_text, <span class="at">size =</span> <span class="sc">!!</span> value_expr),</span>
-<span id="cb29-67"><a href="#cb29-67"></a>                 <span class="at">hjust =</span> <span class="st">"inward"</span>, <span class="at">color =</span> color)</span>
-<span id="cb29-68"><a href="#cb29-68"></a>  }</span>
-<span id="cb29-69"><a href="#cb29-69"></a></span>
-<span id="cb29-70"><a href="#cb29-70"></a>  <span class="fu">return</span>(g)</span>
-<span id="cb29-71"><a href="#cb29-71"></a></span>
-<span id="cb29-72"><a href="#cb29-72"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Function to plot attrition</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>plot_attrition <span class="ot">&lt;-</span> <span class="cf">function</span>(data, </span>
+<span id="cb24-3"><a href="#cb24-3"></a>                           ..., </span>
+<span id="cb24-4"><a href="#cb24-4"></a>                           .value,</span>
+<span id="cb24-5"><a href="#cb24-5"></a>                           <span class="at">fct_reorder =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb24-6"><a href="#cb24-6"></a>                           <span class="at">fct_rev     =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb24-7"><a href="#cb24-7"></a>                           <span class="at">include_lbl =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb24-8"><a href="#cb24-8"></a>                           <span class="at">color       =</span> <span class="st">"#2dc6d6"</span>,</span>
+<span id="cb24-9"><a href="#cb24-9"></a>                           <span class="at">units       =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"K"</span>, <span class="st">"M"</span>)) {</span>
+<span id="cb24-10"><a href="#cb24-10"></a></span>
+<span id="cb24-11"><a href="#cb24-11"></a>  <span class="do">### Inputs</span></span>
+<span id="cb24-12"><a href="#cb24-12"></a>  group_vars_expr   <span class="ot">&lt;-</span> <span class="fu">quos</span>(...)</span>
+<span id="cb24-13"><a href="#cb24-13"></a>  </span>
+<span id="cb24-14"><a href="#cb24-14"></a>  <span class="co"># If the user does not supply anything, </span></span>
+<span id="cb24-15"><a href="#cb24-15"></a>  <span class="co"># this takes the first column of the supplied data</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a>  <span class="cf">if</span> (<span class="fu">length</span>(group_vars_expr) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb24-17"><a href="#cb24-17"></a>    group_vars_expr <span class="ot">&lt;-</span> <span class="fu">quos</span>(rlang<span class="sc">::</span><span class="fu">sym</span>(<span class="fu">colnames</span>(data)[[<span class="dv">1</span>]]))</span>
+<span id="cb24-18"><a href="#cb24-18"></a>    }</span>
+<span id="cb24-19"><a href="#cb24-19"></a></span>
+<span id="cb24-20"><a href="#cb24-20"></a>  value_expr <span class="ot">&lt;-</span> <span class="fu">enquo</span>(.value)</span>
+<span id="cb24-21"><a href="#cb24-21"></a></span>
+<span id="cb24-22"><a href="#cb24-22"></a>  units_val  <span class="ot">&lt;-</span> <span class="cf">switch</span>(units[[<span class="dv">1</span>]],</span>
+<span id="cb24-23"><a href="#cb24-23"></a>                       <span class="st">"M"</span> <span class="ot">=</span> <span class="fl">1e6</span>,</span>
+<span id="cb24-24"><a href="#cb24-24"></a>                       <span class="st">"K"</span> <span class="ot">=</span> <span class="fl">1e3</span>,</span>
+<span id="cb24-25"><a href="#cb24-25"></a>                       <span class="st">"0"</span> <span class="ot">=</span> <span class="dv">1</span>)</span>
+<span id="cb24-26"><a href="#cb24-26"></a>  <span class="cf">if</span> (units[[<span class="dv">1</span>]] <span class="sc">==</span> <span class="st">"0"</span>) units <span class="ot">&lt;-</span> <span class="st">""</span></span>
+<span id="cb24-27"><a href="#cb24-27"></a></span>
+<span id="cb24-28"><a href="#cb24-28"></a>  <span class="co"># Data Manipulation</span></span>
+<span id="cb24-29"><a href="#cb24-29"></a>  <span class="co"># This is a so called Function Factory (a function that produces a function)</span></span>
+<span id="cb24-30"><a href="#cb24-30"></a>  usd <span class="ot">&lt;-</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">"$"</span>, <span class="at">largest_with_cents =</span> <span class="fl">1e3</span>)</span>
+<span id="cb24-31"><a href="#cb24-31"></a></span>
+<span id="cb24-32"><a href="#cb24-32"></a>  <span class="co"># Create the axis labels and values for the plot</span></span>
+<span id="cb24-33"><a href="#cb24-33"></a>  data_manipulated <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb24-34"><a href="#cb24-34"></a>    <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_c</span>(<span class="sc">!!!</span> group_vars_expr, <span class="at">sep =</span> <span class="st">": "</span>) <span class="sc">%&gt;%</span> <span class="fu">as_factor</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb24-35"><a href="#cb24-35"></a>    <span class="fu">mutate</span>(<span class="at">value_text =</span> <span class="fu">str_c</span>(<span class="fu">usd</span>(<span class="sc">!!</span> value_expr <span class="sc">/</span> units_val),</span>
+<span id="cb24-36"><a href="#cb24-36"></a>                              units[[<span class="dv">1</span>]], <span class="at">sep =</span> <span class="st">""</span>))</span>
+<span id="cb24-37"><a href="#cb24-37"></a></span>
+<span id="cb24-38"><a href="#cb24-38"></a>  </span>
+<span id="cb24-39"><a href="#cb24-39"></a>  <span class="co"># Order the labels on the y-axis according to the input</span></span>
+<span id="cb24-40"><a href="#cb24-40"></a>  <span class="cf">if</span> (fct_reorder) {</span>
+<span id="cb24-41"><a href="#cb24-41"></a>    data_manipulated <span class="ot">&lt;-</span> data_manipulated <span class="sc">%&gt;%</span></span>
+<span id="cb24-42"><a href="#cb24-42"></a>      <span class="fu">mutate</span>(<span class="at">name =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(name, <span class="sc">!!</span> value_expr)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-43"><a href="#cb24-43"></a>      <span class="fu">arrange</span>(name)</span>
+<span id="cb24-44"><a href="#cb24-44"></a>  }</span>
+<span id="cb24-45"><a href="#cb24-45"></a></span>
+<span id="cb24-46"><a href="#cb24-46"></a>  <span class="cf">if</span> (fct_rev) {</span>
+<span id="cb24-47"><a href="#cb24-47"></a>    data_manipulated <span class="ot">&lt;-</span> data_manipulated <span class="sc">%&gt;%</span></span>
+<span id="cb24-48"><a href="#cb24-48"></a>      <span class="fu">mutate</span>(<span class="at">name =</span> forcats<span class="sc">::</span><span class="fu">fct_rev</span>(name)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-49"><a href="#cb24-49"></a>      <span class="fu">arrange</span>(name)</span>
+<span id="cb24-50"><a href="#cb24-50"></a>  }</span>
+<span id="cb24-51"><a href="#cb24-51"></a></span>
+<span id="cb24-52"><a href="#cb24-52"></a>  <span class="co"># Visualization</span></span>
+<span id="cb24-53"><a href="#cb24-53"></a>  g <span class="ot">&lt;-</span> data_manipulated <span class="sc">%&gt;%</span></span>
+<span id="cb24-54"><a href="#cb24-54"></a></span>
+<span id="cb24-55"><a href="#cb24-55"></a>        <span class="co"># "name" is a column name generated by our function internally as part of the data manipulation task</span></span>
+<span id="cb24-56"><a href="#cb24-56"></a>        <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> (<span class="sc">!!</span> value_expr), <span class="at">y =</span> name)) <span class="sc">+</span></span>
+<span id="cb24-57"><a href="#cb24-57"></a>        <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> <span class="dv">0</span>, <span class="at">yend =</span> name), <span class="at">color =</span> color) <span class="sc">+</span></span>
+<span id="cb24-58"><a href="#cb24-58"></a>        <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> <span class="sc">!!</span> value_expr), <span class="at">color =</span> color) <span class="sc">+</span></span>
+<span id="cb24-59"><a href="#cb24-59"></a>        <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar) <span class="sc">+</span></span>
+<span id="cb24-60"><a href="#cb24-60"></a>        <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>)) <span class="sc">+</span></span>
+<span id="cb24-61"><a href="#cb24-61"></a>        <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb24-62"><a href="#cb24-62"></a></span>
+<span id="cb24-63"><a href="#cb24-63"></a>  <span class="co"># Plot labels if TRUE</span></span>
+<span id="cb24-64"><a href="#cb24-64"></a>  <span class="cf">if</span> (include_lbl) {</span>
+<span id="cb24-65"><a href="#cb24-65"></a>    g <span class="ot">&lt;-</span> g <span class="sc">+</span></span>
+<span id="cb24-66"><a href="#cb24-66"></a>      <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> value_text, <span class="at">size =</span> <span class="sc">!!</span> value_expr),</span>
+<span id="cb24-67"><a href="#cb24-67"></a>                 <span class="at">hjust =</span> <span class="st">"inward"</span>, <span class="at">color =</span> color)</span>
+<span id="cb24-68"><a href="#cb24-68"></a>  }</span>
+<span id="cb24-69"><a href="#cb24-69"></a></span>
+<span id="cb24-70"><a href="#cb24-70"></a>  <span class="fu">return</span>(g)</span>
+<span id="cb24-71"><a href="#cb24-71"></a></span>
+<span id="cb24-72"><a href="#cb24-72"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-13_0ea22b8c6408d4ee142690647e931f04">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>dept_job_role_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a></span>
-<span id="cb30-3"><a href="#cb30-3"></a>  <span class="co"># Select columnns</span></span>
-<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">count</span>(Department, JobRole, Attrition) <span class="sc">%&gt;%</span></span>
-<span id="cb30-5"><a href="#cb30-5"></a>  <span class="fu">count_to_pct</span>(Department, JobRole) <span class="sc">%&gt;%</span></span>
-<span id="cb30-6"><a href="#cb30-6"></a>  </span>
-<span id="cb30-7"><a href="#cb30-7"></a>  <span class="fu">assess_attrition</span>(Attrition, <span class="at">attrition_value =</span> <span class="st">"Yes"</span>, <span class="at">baseline_pct =</span> <span class="fl">0.088</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb30-8"><a href="#cb30-8"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb30-9"><a href="#cb30-9"></a>    <span class="at">cost_of_attrition =</span> <span class="fu">calculate_attrition_cost</span>(<span class="at">n =</span> n, <span class="at">salary =</span> <span class="dv">80000</span>)</span>
-<span id="cb30-10"><a href="#cb30-10"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb30-11"><a href="#cb30-11"></a></span>
-<span id="cb30-12"><a href="#cb30-12"></a>  <span class="co"># Select columnns</span></span>
-<span id="cb30-13"><a href="#cb30-13"></a>  <span class="fu">plot_attrition</span>(Department, JobRole, <span class="at">.value =</span> cost_of_attrition,</span>
-<span id="cb30-14"><a href="#cb30-14"></a>                 <span class="at">units =</span> <span class="st">"M"</span>) <span class="sc">+</span></span>
-<span id="cb30-15"><a href="#cb30-15"></a>  <span class="fu">labs</span>(</span>
-<span id="cb30-16"><a href="#cb30-16"></a>    <span class="at">title =</span> <span class="st">"Estimated Cost of Attrition by Job Role"</span>,</span>
-<span id="cb30-17"><a href="#cb30-17"></a>    <span class="at">x =</span> <span class="st">"Cost of Attrition"</span>,</span>
-<span id="cb30-18"><a href="#cb30-18"></a>    <span class="at">subtitle =</span> <span class="st">"Looks like Sales Executive and Labaratory Technician are the biggest drivers of cost"</span></span>
-<span id="cb30-19"><a href="#cb30-19"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>dept_job_role_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a></span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="co"># Select columnns</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">count</span>(Department, JobRole, Attrition) <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">count_to_pct</span>(Department, JobRole) <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a>  </span>
+<span id="cb25-7"><a href="#cb25-7"></a>  <span class="fu">assess_attrition</span>(Attrition, <span class="at">attrition_value =</span> <span class="st">"Yes"</span>, <span class="at">baseline_pct =</span> <span class="fl">0.088</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb25-9"><a href="#cb25-9"></a>    <span class="at">cost_of_attrition =</span> <span class="fu">calculate_attrition_cost</span>(<span class="at">n =</span> n, <span class="at">salary =</span> <span class="dv">80000</span>)</span>
+<span id="cb25-10"><a href="#cb25-10"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb25-11"><a href="#cb25-11"></a></span>
+<span id="cb25-12"><a href="#cb25-12"></a>  <span class="co"># Select columnns</span></span>
+<span id="cb25-13"><a href="#cb25-13"></a>  <span class="fu">plot_attrition</span>(Department, JobRole, <span class="at">.value =</span> cost_of_attrition,</span>
+<span id="cb25-14"><a href="#cb25-14"></a>                 <span class="at">units =</span> <span class="st">"M"</span>) <span class="sc">+</span></span>
+<span id="cb25-15"><a href="#cb25-15"></a>  <span class="fu">labs</span>(</span>
+<span id="cb25-16"><a href="#cb25-16"></a>    <span class="at">title =</span> <span class="st">"Estimated Cost of Attrition by Job Role"</span>,</span>
+<span id="cb25-17"><a href="#cb25-17"></a>    <span class="at">x =</span> <span class="st">"Cost of Attrition"</span>,</span>
+<span id="cb25-18"><a href="#cb25-18"></a>    <span class="at">subtitle =</span> <span class="st">"Looks like Sales Executive and Labaratory Technician are the biggest drivers of cost"</span></span>
+<span id="cb25-19"><a href="#cb25-19"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -655,22 +624,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Data Understanding</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-14_34c4b71e29f9deb06ca5005ae6c4dc1d">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Libraries </span></span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb31-3"><a href="#cb31-3"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb31-4"><a href="#cb31-4"></a><span class="fu">library</span>(skimr)</span>
-<span id="cb31-5"><a href="#cb31-5"></a><span class="fu">library</span>(GGally)</span>
-<span id="cb31-6"><a href="#cb31-6"></a></span>
-<span id="cb31-7"><a href="#cb31-7"></a><span class="co"># Load Data data definitions</span></span>
-<span id="cb31-8"><a href="#cb31-8"></a></span>
-<span id="cb31-9"><a href="#cb31-9"></a>path_data_definitions <span class="ot">&lt;-</span> <span class="st">"../../files/data_definitions.xlsx"</span></span>
-<span id="cb31-10"><a href="#cb31-10"></a>definitions_raw_tbl   <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(path_data_definitions, <span class="at">sheet =</span> <span class="dv">1</span>, <span class="at">col_names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Libraries </span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb26-6"><a href="#cb26-6"></a></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="co"># Load Data data definitions</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a></span>
+<span id="cb26-9"><a href="#cb26-9"></a>path_data_definitions <span class="ot">&lt;-</span> <span class="st">"../../files/data_definitions.xlsx"</span></span>
+<span id="cb26-10"><a href="#cb26-10"></a>definitions_raw_tbl   <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(path_data_definitions, <span class="at">sheet =</span> <span class="dv">1</span>, <span class="at">col_names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; New names:
 #&gt; • `` -&gt; `...1`
 #&gt; • `` -&gt; `...2`</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>employee_attrition_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>employee_attrition_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -681,8 +650,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-15_605435a5358db9ef3b9d969d60bd1e4a">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># Descriptive Features</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(Age, DistanceFromHome, Gender, MaritalStatus, NumCompaniesWorked, Over18)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Descriptive Features</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(Age, DistanceFromHome, Gender, MaritalStatus, NumCompaniesWorked, Over18)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -691,8 +660,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </script>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Employment Features</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(Department, EmployeeCount, EmployeeNumber, JobInvolvement, JobLevel, JobRole, JobSatisfaction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Employment Features</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(Department, EmployeeCount, EmployeeNumber, JobInvolvement, JobLevel, JobRole, JobSatisfaction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -701,8 +670,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </script>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># Compensation Features</span></span>
-<span id="cb36-2"><a href="#cb36-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(DailyRate, HourlyRate, MonthlyIncome, MonthlyRate, PercentSalaryHike, StockOptionLevel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Compensation Features</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(DailyRate, HourlyRate, MonthlyIncome, MonthlyRate, PercentSalaryHike, StockOptionLevel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -711,8 +680,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </script>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Survery Results</span></span>
-<span id="cb37-2"><a href="#cb37-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(EnvironmentSatisfaction, JobSatisfaction, RelationshipSatisfaction, WorkLifeBalance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Survery Results</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(EnvironmentSatisfaction, JobSatisfaction, RelationshipSatisfaction, WorkLifeBalance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -721,8 +690,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </script>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># Performance Data</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(JobInvolvement, PerformanceRating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Performance Data</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(JobInvolvement, PerformanceRating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -731,8 +700,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </script>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Work-Life Features</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(BusinessTravel, OverTime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># Work-Life Features</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(BusinessTravel, OverTime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -741,8 +710,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </script>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># Training &amp; Education</span></span>
-<span id="cb40-2"><a href="#cb40-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(Education, EducationField, TrainingTimesLastYear)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Training &amp; Education</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(Education, EducationField, TrainingTimesLastYear)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -751,8 +720,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </script>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Time-Based Features</span></span>
-<span id="cb41-2"><a href="#cb41-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(TotalWorkingYears, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># Time-Based Features</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(TotalWorkingYears, YearsAtCompany, YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -764,8 +733,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Data Summarization</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-16_1ee5e195cf1f7fe35c70f0f5983cfc5e">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">library</span>(skimr)</span>
-<span id="cb42-2"><a href="#cb42-2"></a><span class="fu">skim</span>(employee_attrition_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">skim</span>(employee_attrition_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
 <caption>Data summary</caption>
@@ -1297,10 +1266,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Character Data Type</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb43-3"><a href="#cb43-3"></a>    <span class="fu">select_if</span>(is.character) <span class="sc">%&gt;%</span></span>
-<span id="cb43-4"><a href="#cb43-4"></a>    <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># Character Data Type</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>    <span class="fu">select_if</span>(is.character) <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="#cb38-4"></a>    <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; Rows: 1,470
 #&gt; Columns: 9
@@ -1314,10 +1283,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt; $ Over18         &lt;chr&gt; "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", …
 #&gt; $ OverTime       &lt;chr&gt; "Yes", "No", "Yes", "Yes", "No", "No", "Yes", "No", "No…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Get "levels"</span></span>
-<span id="cb45-2"><a href="#cb45-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb45-3"><a href="#cb45-3"></a>    <span class="fu">select_if</span>(is.character) <span class="sc">%&gt;%</span></span>
-<span id="cb45-4"><a href="#cb45-4"></a>    <span class="fu">map</span>(unique)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># Get "levels"</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="#cb40-3"></a>    <span class="fu">select_if</span>(is.character) <span class="sc">%&gt;%</span></span>
+<span id="cb40-4"><a href="#cb40-4"></a>    <span class="fu">map</span>(unique)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; $Attrition
 #&gt; [1] "Yes" "No" 
@@ -1351,10 +1320,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt; $OverTime
 #&gt; [1] "Yes" "No"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># Proportions    </span></span>
-<span id="cb47-2"><a href="#cb47-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb47-3"><a href="#cb47-3"></a>    <span class="fu">select_if</span>(is.character) <span class="sc">%&gt;%</span></span>
-<span id="cb47-4"><a href="#cb47-4"></a>    <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">table</span>(.) <span class="sc">%&gt;%</span> <span class="fu">prop.table</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># Proportions    </span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb42-3"><a href="#cb42-3"></a>    <span class="fu">select_if</span>(is.character) <span class="sc">%&gt;%</span></span>
+<span id="cb42-4"><a href="#cb42-4"></a>    <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">table</span>(.) <span class="sc">%&gt;%</span> <span class="fu">prop.table</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; $Attrition
 #&gt; .
@@ -1407,10 +1376,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt;        No       Yes 
 #&gt; 0.7170068 0.2829932</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># Numeric Data</span></span>
-<span id="cb49-2"><a href="#cb49-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb49-3"><a href="#cb49-3"></a>    <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span></span>
-<span id="cb49-4"><a href="#cb49-4"></a>    <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">unique</span>(.) <span class="sc">%&gt;%</span> <span class="fu">length</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># Numeric Data</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3"></a>    <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb44-4"><a href="#cb44-4"></a>    <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">unique</span>(.) <span class="sc">%&gt;%</span> <span class="fu">length</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; $Age
 #&gt; [1] 43
@@ -1490,13 +1459,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt; $YearsWithCurrManager
 #&gt; [1] 18</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb51-2"><a href="#cb51-2"></a>    <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span></span>
-<span id="cb51-3"><a href="#cb51-3"></a>    <span class="fu">map_df</span>(<span class="sc">~</span> <span class="fu">unique</span>(.) <span class="sc">%&gt;%</span> <span class="fu">length</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb51-4"><a href="#cb51-4"></a>    <span class="co"># Select all columns</span></span>
-<span id="cb51-5"><a href="#cb51-5"></a>    <span class="fu">pivot_longer</span>(<span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb51-6"><a href="#cb51-6"></a>    <span class="fu">arrange</span>(value) <span class="sc">%&gt;%</span></span>
-<span id="cb51-7"><a href="#cb51-7"></a>    <span class="fu">filter</span>(value <span class="sc">&lt;=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>    <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="#cb46-3"></a>    <span class="fu">map_df</span>(<span class="sc">~</span> <span class="fu">unique</span>(.) <span class="sc">%&gt;%</span> <span class="fu">length</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb46-4"><a href="#cb46-4"></a>    <span class="co"># Select all columns</span></span>
+<span id="cb46-5"><a href="#cb46-5"></a>    <span class="fu">pivot_longer</span>(<span class="fu">everything</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb46-6"><a href="#cb46-6"></a>    <span class="fu">arrange</span>(value) <span class="sc">%&gt;%</span></span>
+<span id="cb46-7"><a href="#cb46-7"></a>    <span class="fu">filter</span>(value <span class="sc">&lt;=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1508,11 +1477,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Data Visualization</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-17_8c9aabd82e33c72cd17390e7abd3d855">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">library</span>(GGally)</span>
-<span id="cb52-2"><a href="#cb52-2"></a></span>
-<span id="cb52-3"><a href="#cb52-3"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb52-4"><a href="#cb52-4"></a>    <span class="fu">select</span>(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome) <span class="sc">%&gt;%</span></span>
-<span id="cb52-5"><a href="#cb52-5"></a>    <span class="fu">ggpairs</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb47-2"><a href="#cb47-2"></a></span>
+<span id="cb47-3"><a href="#cb47-3"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb47-4"><a href="#cb47-4"></a>    <span class="fu">select</span>(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome) <span class="sc">%&gt;%</span></span>
+<span id="cb47-5"><a href="#cb47-5"></a>    <span class="fu">ggpairs</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 #&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
@@ -1536,11 +1505,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-18_4a19149a621104646eca4eb864f0a108">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb54-2"><a href="#cb54-2"></a>    <span class="fu">select</span>(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome) <span class="sc">%&gt;%</span></span>
-<span id="cb54-3"><a href="#cb54-3"></a>    <span class="fu">ggpairs</span>(<span class="fu">aes</span>(<span class="at">color =</span> Attrition), <span class="at">lower =</span> <span class="st">"blank"</span>, <span class="at">legend =</span> <span class="dv">1</span>,</span>
-<span id="cb54-4"><a href="#cb54-4"></a>            <span class="at">diag  =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">"densityDiag"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>))) <span class="sc">+</span></span>
-<span id="cb54-5"><a href="#cb54-5"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>    <span class="fu">select</span>(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome) <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a href="#cb49-3"></a>    <span class="fu">ggpairs</span>(<span class="fu">aes</span>(<span class="at">color =</span> Attrition), <span class="at">lower =</span> <span class="st">"blank"</span>, <span class="at">legend =</span> <span class="dv">1</span>,</span>
+<span id="cb49-4"><a href="#cb49-4"></a>            <span class="at">diag  =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">"densityDiag"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>))) <span class="sc">+</span></span>
+<span id="cb49-5"><a href="#cb49-5"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1550,39 +1519,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>Custom plotting function:</p>
-<div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-19_b0efd5eb27d3635c2e8eed52cda2f2c6">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="co"># Create data tibble, to potentially debug the plot_ggpairs function (because it has a data argument)</span></span>
-<span id="cb55-2"><a href="#cb55-2"></a>data <span class="ot">&lt;-</span> employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb55-3"><a href="#cb55-3"></a>    <span class="fu">select</span>(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome)</span>
-<span id="cb55-4"><a href="#cb55-4"></a></span>
-<span id="cb55-5"><a href="#cb55-5"></a>plot_ggpairs <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">color =</span> <span class="cn">NULL</span>, <span class="at">density_alpha =</span> <span class="fl">0.5</span>) {</span>
-<span id="cb55-6"><a href="#cb55-6"></a>    </span>
-<span id="cb55-7"><a href="#cb55-7"></a>    color_expr <span class="ot">&lt;-</span> <span class="fu">enquo</span>(color)</span>
-<span id="cb55-8"><a href="#cb55-8"></a>    </span>
-<span id="cb55-9"><a href="#cb55-9"></a>    <span class="cf">if</span> (rlang<span class="sc">::</span><span class="fu">quo_is_null</span>(color_expr)) {</span>
-<span id="cb55-10"><a href="#cb55-10"></a>        </span>
-<span id="cb55-11"><a href="#cb55-11"></a>        g <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb55-12"><a href="#cb55-12"></a>            <span class="fu">ggpairs</span>(<span class="at">lower =</span> <span class="st">"blank"</span>) </span>
-<span id="cb55-13"><a href="#cb55-13"></a>        </span>
-<span id="cb55-14"><a href="#cb55-14"></a>    } <span class="cf">else</span> {</span>
-<span id="cb55-15"><a href="#cb55-15"></a>        </span>
-<span id="cb55-16"><a href="#cb55-16"></a>        color_name <span class="ot">&lt;-</span> <span class="fu">quo_name</span>(color_expr)</span>
-<span id="cb55-17"><a href="#cb55-17"></a>        </span>
-<span id="cb55-18"><a href="#cb55-18"></a>        g <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb55-19"><a href="#cb55-19"></a>            <span class="fu">ggpairs</span>(<span class="at">mapping =</span> <span class="fu">aes_string</span>(<span class="at">color =</span> color_name), </span>
-<span id="cb55-20"><a href="#cb55-20"></a>                    <span class="at">lower =</span> <span class="st">"blank"</span>, <span class="at">legend =</span> <span class="dv">1</span>,</span>
-<span id="cb55-21"><a href="#cb55-21"></a>                    <span class="at">diag =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">"densityDiag"</span>, </span>
-<span id="cb55-22"><a href="#cb55-22"></a>                                                  <span class="at">alpha =</span> density_alpha))) <span class="sc">+</span></span>
-<span id="cb55-23"><a href="#cb55-23"></a>            <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
-<span id="cb55-24"><a href="#cb55-24"></a>    }</span>
-<span id="cb55-25"><a href="#cb55-25"></a>    </span>
-<span id="cb55-26"><a href="#cb55-26"></a>    <span class="fu">return</span>(g)</span>
-<span id="cb55-27"><a href="#cb55-27"></a>    </span>
-<span id="cb55-28"><a href="#cb55-28"></a>}</span>
-<span id="cb55-29"><a href="#cb55-29"></a></span>
-<span id="cb55-30"><a href="#cb55-30"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb55-31"><a href="#cb55-31"></a>    <span class="fu">select</span>(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome) <span class="sc">%&gt;%</span></span>
-<span id="cb55-32"><a href="#cb55-32"></a>    <span class="fu">plot_ggpairs</span>(<span class="at">color =</span> Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-19_6ce6c89f0ab968af2e1dce2cead07332">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>data <span class="ot">&lt;-</span> employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>    <span class="fu">select</span>(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome)</span>
+<span id="cb50-3"><a href="#cb50-3"></a></span>
+<span id="cb50-4"><a href="#cb50-4"></a>plot_ggpairs <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">color =</span> <span class="cn">NULL</span>, <span class="at">density_alpha =</span> <span class="fl">0.5</span>) {</span>
+<span id="cb50-5"><a href="#cb50-5"></a>    </span>
+<span id="cb50-6"><a href="#cb50-6"></a>    color_expr <span class="ot">&lt;-</span> <span class="fu">enquo</span>(color)</span>
+<span id="cb50-7"><a href="#cb50-7"></a>    </span>
+<span id="cb50-8"><a href="#cb50-8"></a>    <span class="cf">if</span> (rlang<span class="sc">::</span><span class="fu">quo_is_null</span>(color_expr)) {</span>
+<span id="cb50-9"><a href="#cb50-9"></a>        </span>
+<span id="cb50-10"><a href="#cb50-10"></a>        g <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb50-11"><a href="#cb50-11"></a>            <span class="fu">ggpairs</span>(<span class="at">lower =</span> <span class="st">"blank"</span>) </span>
+<span id="cb50-12"><a href="#cb50-12"></a>        </span>
+<span id="cb50-13"><a href="#cb50-13"></a>    } <span class="cf">else</span> {</span>
+<span id="cb50-14"><a href="#cb50-14"></a>        </span>
+<span id="cb50-15"><a href="#cb50-15"></a>        color_name <span class="ot">&lt;-</span> <span class="fu">quo_name</span>(color_expr)</span>
+<span id="cb50-16"><a href="#cb50-16"></a>        </span>
+<span id="cb50-17"><a href="#cb50-17"></a>        g <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb50-18"><a href="#cb50-18"></a>            <span class="fu">ggpairs</span>(<span class="at">mapping =</span> <span class="fu">aes_string</span>(<span class="at">color =</span> color_name), </span>
+<span id="cb50-19"><a href="#cb50-19"></a>                    <span class="at">lower =</span> <span class="st">"blank"</span>, <span class="at">legend =</span> <span class="dv">1</span>,</span>
+<span id="cb50-20"><a href="#cb50-20"></a>                    <span class="at">diag =</span> <span class="fu">list</span>(<span class="at">continuous =</span> <span class="fu">wrap</span>(<span class="st">"densityDiag"</span>, </span>
+<span id="cb50-21"><a href="#cb50-21"></a>                                                  <span class="at">alpha =</span> density_alpha))) <span class="sc">+</span></span>
+<span id="cb50-22"><a href="#cb50-22"></a>            <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span>
+<span id="cb50-23"><a href="#cb50-23"></a>    }</span>
+<span id="cb50-24"><a href="#cb50-24"></a>    </span>
+<span id="cb50-25"><a href="#cb50-25"></a>    <span class="fu">return</span>(g)</span>
+<span id="cb50-26"><a href="#cb50-26"></a>    </span>
+<span id="cb50-27"><a href="#cb50-27"></a>}</span>
+<span id="cb50-28"><a href="#cb50-28"></a></span>
+<span id="cb50-29"><a href="#cb50-29"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb50-30"><a href="#cb50-30"></a>    <span class="fu">select</span>(Attrition, Age, Gender, MaritalStatus, NumCompaniesWorked, Over18, DistanceFromHome) <span class="sc">%&gt;%</span></span>
+<span id="cb50-31"><a href="#cb50-31"></a>    <span class="fu">plot_ggpairs</span>(<span class="at">color =</span> Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
 #&gt; ℹ Please use tidy evaluation idioms with `aes()`.
@@ -1596,17 +1564,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<section id="challenge" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Challenge:</h1>
+<section id="challenge-answers" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Challenge Answers:</h1>
 <ol type="1">
 <li>Compensation features: MonthlyIncome and Attrition<br>
 </li>
 </ol>
 <p>Answer: C- Those that are leaving have a lower Monthly Income</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-20_5f948388ca4304cbbd0364a197e7ba57">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a>    <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"income"</span>), <span class="fu">contains</span>(<span class="st">"rate"</span>), <span class="fu">contains</span>(<span class="st">"salary"</span>), <span class="fu">contains</span>(<span class="st">"stock"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb57-3"><a href="#cb57-3"></a>    <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2"></a>    <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"income"</span>), <span class="fu">contains</span>(<span class="st">"rate"</span>), <span class="fu">contains</span>(<span class="st">"salary"</span>), <span class="fu">contains</span>(<span class="st">"stock"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="#cb52-3"></a>    <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
 #&gt; ℹ Please use tidy evaluation idioms with `aes()`.
@@ -1626,9 +1594,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Answer: D- It’s difficult to deduce anything based on the visualization</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-21_3d70a2e9b3845a32c066bd39ca21f0b2">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb59-2"><a href="#cb59-2"></a>    <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"income"</span>), <span class="fu">contains</span>(<span class="st">"rate"</span>), <span class="fu">contains</span>(<span class="st">"salary"</span>), <span class="fu">contains</span>(<span class="st">"stock"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb59-3"><a href="#cb59-3"></a>    <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a>    <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"income"</span>), <span class="fu">contains</span>(<span class="st">"rate"</span>), <span class="fu">contains</span>(<span class="st">"salary"</span>), <span class="fu">contains</span>(<span class="st">"stock"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a href="#cb54-3"></a>    <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>#&gt; Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
 #&gt; ℹ Please use tidy evaluation idioms with `aes()`.
@@ -1648,9 +1616,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Answer: B - Those that are staying have a higher stock option level</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-22_5d7c3c1daae20358b7de7cf3a85c4911">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb61-2"><a href="#cb61-2"></a>    <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"income"</span>), <span class="fu">contains</span>(<span class="st">"rate"</span>), <span class="fu">contains</span>(<span class="st">"salary"</span>), <span class="fu">contains</span>(<span class="st">"stock"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb61-3"><a href="#cb61-3"></a>    <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="#cb56-2"></a>    <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"income"</span>), <span class="fu">contains</span>(<span class="st">"rate"</span>), <span class="fu">contains</span>(<span class="st">"salary"</span>), <span class="fu">contains</span>(<span class="st">"stock"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb56-3"><a href="#cb56-3"></a>    <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1665,9 +1633,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Answer: A- A higher proportion of those leaving have a low environment satisfaction level</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-23_67675fbe5dedc3a3ca68944993cc95af">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb62-2"><a href="#cb62-2"></a>    <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"satisfaction"</span>), <span class="fu">contains</span>(<span class="st">"life"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb62-3"><a href="#cb62-3"></a>    <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a>    <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"satisfaction"</span>), <span class="fu">contains</span>(<span class="st">"life"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb57-3"><a href="#cb57-3"></a>    <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1682,9 +1650,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Answer: B- Those that are staying have a higher density of 2’s and 3’s</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-24_7da2a71a6527f7c154e814d7b2c70b3f">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb63-2"><a href="#cb63-2"></a>    <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"satisfaction"</span>), <span class="fu">contains</span>(<span class="st">"life"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb63-3"><a href="#cb63-3"></a>    <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a>    <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"satisfaction"</span>), <span class="fu">contains</span>(<span class="st">"life"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="#cb58-3"></a>    <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1699,9 +1667,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Answer: A- Those that are leaving have a lower density of 3’s and 4’s</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-25_5ef7c27eb61d09a0243bbc765a46c5ea">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb64-2"><a href="#cb64-2"></a>  <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"performance"</span>), <span class="fu">contains</span>(<span class="st">"involvement"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb64-3"><a href="#cb64-3"></a>  <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a>  <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"performance"</span>), <span class="fu">contains</span>(<span class="st">"involvement"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a href="#cb59-3"></a>  <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1716,9 +1684,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Answer: B- The proportion of those staying that are working Over Time are high compared to those that are not staying</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-26_7040b8035e81a50a1dc1a4b54b4f420c">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb65-2"><a href="#cb65-2"></a>  <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"overtime"</span>), <span class="fu">contains</span>(<span class="st">"travel"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb65-3"><a href="#cb65-3"></a>  <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb60-2"><a href="#cb60-2"></a>  <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"overtime"</span>), <span class="fu">contains</span>(<span class="st">"travel"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb60-3"><a href="#cb60-3"></a>  <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1733,9 +1701,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Answer: B- People that leave tend to have less annual trainings</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-27_ec64d510d135dfa251a31c08798f6a3e">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb66-2"><a href="#cb66-2"></a>    <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"training"</span>), <span class="fu">contains</span>(<span class="st">"education"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb66-3"><a href="#cb66-3"></a>    <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a>    <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"training"</span>), <span class="fu">contains</span>(<span class="st">"education"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a href="#cb61-3"></a>    <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1750,9 +1718,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Answer: B- People that leave tend to have less working years at the company</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-28_529ba7bd230507cf461f014139b35d76">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb67-2"><a href="#cb67-2"></a>  <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"years"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb67-3"><a href="#cb67-3"></a>  <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a>  <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"years"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="#cb62-3"></a>  <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1767,9 +1735,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Answer: C- It’s difficult to deduce anything based on the visualization</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-29_f182e8f89eac40177633de23ad843efd">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb68-2"><a href="#cb68-2"></a>  <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"years"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb68-3"><a href="#cb68-3"></a>  <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>  <span class="fu">select</span>(Attrition, <span class="fu">contains</span>(<span class="st">"years"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a href="#cb63-3"></a>  <span class="fu">plot_ggpairs</span>(Attrition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -2032,7 +2000,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":true,"closeEffect":"zoom","descPosition":"bottom"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":true});</script>
 
 
 
