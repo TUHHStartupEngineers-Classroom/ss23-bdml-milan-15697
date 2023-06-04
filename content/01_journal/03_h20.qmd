@@ -486,9 +486,8 @@ employee_attrition_tbl %>%
 ```
 
 7. Work-Life Features: Over Time and Attrition
-\
 
-Answer: B- The proportion of those staying that are working Over Time are high compared to those that are not staying
+Answer: A- The proportion of those leaving that are working Over Time are high compared to those that are not leaving
 ```{r}
 employee_attrition_tbl %>%
   select(Attrition, contains("overtime"), contains("travel")) %>%

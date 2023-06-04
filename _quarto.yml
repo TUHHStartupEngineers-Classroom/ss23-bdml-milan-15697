@@ -20,8 +20,8 @@ website:
             file: content/01_journal/02_Regression.qmd
           - text: "03 Automated Machine Learning with H20 (I)"
             file: content/01_journal/03_h20.qmd
-          # - text: "04 --"
-          #   file: content/01_journal/04_data_visualization.qmd
+          - text: "04 Automated Machine Learning with H20 (II)"
+            file: content/01_journal/04_h20.qmd
       # - text: "Class notes"
       #   file: content/02_notes/05_class_notes.qmd
       # - text: "Links"
