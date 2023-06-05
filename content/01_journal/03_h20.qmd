@@ -430,7 +430,7 @@ employee_attrition_tbl %>%
     plot_ggpairs(color = Attrition)
 ```
 # Challenge Answers:
-1. Compensation features: MonthlyIncome and Attrition\
+## 1. Compensation features: MonthlyIncome and Attrition\
 
 Answer: C- Those that are leaving have a lower Monthly Income
 ```{r}
@@ -440,7 +440,7 @@ employee_attrition_tbl %>%
     plot_ggpairs(Attrition)
 ```
 
-2. Compensation Features: Percent Salary Hike and Attrition\
+## 2. Compensation Features: Percent Salary Hike and Attrition\
 
 Answer: D- It's difficult to deduce anything based on the visualization
 ```{r}
@@ -449,7 +449,7 @@ employee_attrition_tbl %>%
     plot_ggpairs(Attrition)
 ```
 
-3. Compensation Features: Stock Option Level and Attrition\
+## 3. Compensation Features: Stock Option Level and Attrition\
 
 Answer: B - Those that are staying have a higher stock option level
 ```{r}
@@ -458,7 +458,7 @@ employee_attrition_tbl %>%
     plot_ggpairs(Attrition)
 ```
 
-4. Survey Results: Environment Satisfaction , Attrition\
+## 4. Survey Results: Environment Satisfaction , Attrition\
 
 Answer: A- A higher proportion of those leaving have a low environment satisfaction level
 ```{r}
@@ -467,7 +467,7 @@ employee_attrition_tbl %>%
     plot_ggpairs(Attrition)
 ```
 
-5. Survey Results: Work Life Balance and Attrition\
+## 5. Survey Results: Work Life Balance and Attrition\
 
 Answer: B- Those that are staying have a higher density of 2's and 3's
 ```{r}
@@ -476,7 +476,7 @@ employee_attrition_tbl %>%
     plot_ggpairs(Attrition)
 ```
 
-6. Performance Data: Job Involvement and Attrition\
+## 6. Performance Data: Job Involvement and Attrition\
 
 Answer: A- Those that are leaving have a lower density of 3's and 4's
 ```{r}
@@ -485,7 +485,7 @@ employee_attrition_tbl %>%
   plot_ggpairs(Attrition)
 ```
 
-7. Work-Life Features: Over Time and Attrition
+## 7. Work-Life Features: Over Time and Attrition
 
 Answer: A- The proportion of those leaving that are working Over Time are high compared to those that are not leaving
 ```{r}
@@ -495,8 +495,8 @@ employee_attrition_tbl %>%
 
 ```
 
-8. Training and Education: Training Times Last Year and Attrition\
-
+## 8. Training and Education: Training Times Last Year and Attrition\
+ 
 Answer: B- People that leave tend to have less annual trainings
 ```{r}
 employee_attrition_tbl %>%
@@ -504,7 +504,7 @@ employee_attrition_tbl %>%
     plot_ggpairs(Attrition)
 ```
 
-9. Time-Based Features: Years At Company and Attrition\
+## 9. Time-Based Features: Years At Company and Attrition\
 
 Answer: B- People that leave tend to have less working years at the company
 ```{r}
@@ -513,7 +513,7 @@ employee_attrition_tbl %>%
   plot_ggpairs(Attrition)
 ```
 
-10. Time-Based Features: Years Since Last Promotion and Attrition\
+## 10. Time-Based Features: Years Since Last Promotion and Attrition\
 
 Answer: C- It's difficult to deduce anything based on the visualization
 ```{r}

@@ -1,0 +1,140 @@
+---
+title: "Challenge - Explaining Black-Box Models With LIME"
+author: "Milan Bhardwaj"
+date: "06/06/2023"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
+```
+
+# Challenge Part 1: Recreate plot_features(). Take the explanation data and use the first case to create a plot similar to the output of plot_features().
+
+## Loading Libraries
+```{r}
+library(tidyquant)
+library(recipes)
+library(rsample)
+library(readxl)
+library(lime)
+library(tidyverse)
+```
+
+## Reading the csv and mutating:
+```{r}
+product_data <- read_csv("../../files/product_backorders.csv")
+product_data_proc <- product_data %>%
+  mutate(prod_backorder = went_on_backorder %>% str_to_lower() %>% str_detect("yes") %>% as.numeric()) %>%
+  select(-c(went_on_backorder))
+glimpse(product_data_proc)
+
+```
+
+## Split, Train and Test:
+```{r}
+split_obj <- initial_split(product_data_proc, prop = 0.75)
+train_tbl <- training(split_obj)
+test_tbl <- testing(split_obj)
+```
+
+## Creating ML preprocessing recipe:
+```{r}
+recipe_obj <- recipe(prod_backorder ~ ., data = train_tbl) %>%
+  step_zv(all_predictors()) %>%
+  step_dummy(all_nominal(), -all_outcomes()) %>%
+  prep()
+
+split_obj<- initial_split(product_data_proc, prop = 0.75)
+train_tbl<- training(split_obj)
+test_tbl<- testing(split_obj)
+
+```
+
+## Initializing H2O:
+```{r}
+library(h2o)
+h2o.init()
+```
+ 
+## Loading my H2O model from previous challenge:
+```{r}
+automl_model <- h2o.loadModel("Challenge_H20_Leader_Model_20230604/StackedEnsemble_AllModels_3_AutoML_4_20230604_144513")
+```
+
+
+## Plotting- Make predictions using the model
+```{r}
+predictions_tbl <- automl_model %>%
+  h2o.predict(newdata = as.h2o(test_tbl)) %>%
+  as.tibble() %>%
+  bind_cols(test_tbl %>% select(everything()))
+
+predictions_tbl
+```
+## Summary
+```{r}
+summary(train_tbl)
+```
+
+
+## Original plot_features()
+```{r}
+explainer <- train_tbl %>%
+  select(-prod_backorder) %>%
+  lime(
+    model = automl_model,
+    bin_continuous = TRUE,
+    n_bins = 4,
+    quantile_bins = TRUE
+  )
+
+explanation <- test_tbl %>%
+  slice(1) %>%
+  select(-prod_backorder) %>%
+  lime::explain(
+    explainer = explainer,
+    n_labels = 1,
+    n_features = 8,
+    n_permutations = 5000,
+    kernel_width = 1
+  )
+
+explanation
+```
+## Plotting the original explanation
+```{r}
+plot <- plot_features(explanation = explanation, ncol = 1, cases = 1)
+plot
+```
+
+# Bonus Objectives:
+1. Get your custom plot_features() function to scale to multiple cases
+2. Use theme arguments to modify the look of the plot
+
+## Plot multiple cases
+```{r}
+
+explanation_multi <- test_tbl %>%
+  slice(1:20) %>%
+  select(-prod_backorder) %>%
+  lime::explain(
+    explainer = explainer,
+    n_labels = 1,
+    n_features = 8,
+    n_permutations = 5000,
+    kernel_width = 1
+  )
+
+explanation_multi %>%
+    as.tibble()
+
+plot_explanations(explanation_multi)
+```
+
+# Part 2: Recreate plot_explanations():
+
+Take the full explanation data and recreate the second plot.
+You will need at least the layers geom_tile() and facet_wrap().
+
+```{r}
+```

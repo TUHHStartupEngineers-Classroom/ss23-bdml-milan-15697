@@ -4,6 +4,8 @@ author: "Milan Bhardwaj"
 date: "6/3/2023"
 ---
 
+# Build a Model:
+
 ```{r}
 library(tidyverse)
 library(parsnip)
@@ -15,15 +17,13 @@ library(tune)
 library(xgboost)
 ```
 
-#Challenge Answer:
-
-Reading the Data:
+# Reading the Data:
 ```{r}
 bike_data <- readRDS("../../files/bike_features_tbl.rds") %>% select(-c("Brake Rotor"))
 bike_data
 ```
 
-Processing Initial Features:
+# Processing Initial Features:
 ```{r}
 bike_data_processed <- bike_data %>%
   select(model:url, `Rear Derailleur`, `Shift Lever`) %>%
@@ -59,7 +59,7 @@ bike_data_processed <- bike_data %>%
 bike_data_processed
 ```
 
-Using Recepies package to create features:
+# Using Recepies package to create features:
 ```{r}
 # Build features using recipes
 set.seed(42)
@@ -72,7 +72,7 @@ train_recipe <- recipe(price ~ ., data = train_data) %>%
 
 ```
 
-Baking the recipe:
+# Baking the recipe:
 ```{r}
 train_transformed_tbl <- bake(prep(train_recipe), new_data = NULL)
 test_transformed_tbl <- bake(prep(train_recipe), new_data = test_data)
@@ -80,7 +80,7 @@ train_transformed_tbl
 test_transformed_tbl
 ```
 
-Building xgboost model
+# Building xgboost model
 ```{r}
 set.seed(42)
 xgboost_model <- boost_tree(
@@ -92,33 +92,33 @@ xgboost_model <- boost_tree(
   set_engine("xgboost")
 ```
 
-Using workflow package:
+# Using workflow package:
 ```{r}
 workflow_model <- workflow() %>%
   add_model(xgboost_model) %>%
   add_recipe(train_recipe)
 ```
 
-Fitting the workflow:
+# Fitting the workflow:
 ```{r}
 model_fit <- fit(workflow_model, data = train_data)
 ```
 
-Model predictions and evaluation metrics:
+# Model predictions and evaluation metrics:
 ```{r}
 model_predictions <- predict(model_fit, new_data = test_data) %>%
   bind_cols(test_data %>% select(price))
 evaluation_metrics <- metrics(truth = price, estimate = .pred, data = model_predictions)
 ```
 
-Some tuning:
+# Some tuning:
 ```{r}
 folds <- vfold_cv(train_data, v = 10)
 tuned_workflow <- workflow_model %>%
   fit_resamples(resamples = folds)
 ```
 
-Evaluation of Model:
+# Evaluation of Model:
 ```{r}
 best_model <- show_best(tuned_workflow, metric = "rmse")
 all_metrics <- collect_metrics(tuned_workflow)

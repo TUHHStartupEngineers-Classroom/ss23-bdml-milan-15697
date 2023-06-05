@@ -177,6 +177,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="dropdown-item" href="../../content/01_journal/04_h20.html">
  <span class="dropdown-text">04 Automated Machine Learning with H20 (II)</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/01_journal/06_lime.html">
+ <span class="dropdown-text">06 Explaining Black-Box Models With LIME</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -197,7 +201,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Contents</h2>
    
   <ul class="collapse">
-  <li><a href="#challenge-answers" id="toc-challenge-answers" class="nav-link active" data-scroll-target="#challenge-answers"><span class="toc-section-number">1</span>  Challenge Answers:</a></li>
+  <li><a href="#challenge-answers" id="toc-challenge-answers" class="nav-link active" data-scroll-target="#challenge-answers"><span class="toc-section-number">1</span>  Challenge Answers:</a>
+  <ul class="collapse">
+  <li><a href="#compensation-features-monthlyincome-and-attrition" id="toc-compensation-features-monthlyincome-and-attrition" class="nav-link" data-scroll-target="#compensation-features-monthlyincome-and-attrition"><span class="toc-section-number">1.1</span>  1. Compensation features: MonthlyIncome and Attrition<br>
+  </a></li>
+  <li><a href="#compensation-features-percent-salary-hike-and-attrition" id="toc-compensation-features-percent-salary-hike-and-attrition" class="nav-link" data-scroll-target="#compensation-features-percent-salary-hike-and-attrition"><span class="toc-section-number">1.2</span>  2. Compensation Features: Percent Salary Hike and Attrition<br>
+  </a></li>
+  <li><a href="#compensation-features-stock-option-level-and-attrition" id="toc-compensation-features-stock-option-level-and-attrition" class="nav-link" data-scroll-target="#compensation-features-stock-option-level-and-attrition"><span class="toc-section-number">1.3</span>  3. Compensation Features: Stock Option Level and Attrition<br>
+  </a></li>
+  <li><a href="#survey-results-environment-satisfaction-attrition" id="toc-survey-results-environment-satisfaction-attrition" class="nav-link" data-scroll-target="#survey-results-environment-satisfaction-attrition"><span class="toc-section-number">1.4</span>  4. Survey Results: Environment Satisfaction , Attrition<br>
+  </a></li>
+  <li><a href="#survey-results-work-life-balance-and-attrition" id="toc-survey-results-work-life-balance-and-attrition" class="nav-link" data-scroll-target="#survey-results-work-life-balance-and-attrition"><span class="toc-section-number">1.5</span>  5. Survey Results: Work Life Balance and Attrition<br>
+  </a></li>
+  <li><a href="#performance-data-job-involvement-and-attrition" id="toc-performance-data-job-involvement-and-attrition" class="nav-link" data-scroll-target="#performance-data-job-involvement-and-attrition"><span class="toc-section-number">1.6</span>  6. Performance Data: Job Involvement and Attrition<br>
+  </a></li>
+  <li><a href="#work-life-features-over-time-and-attrition" id="toc-work-life-features-over-time-and-attrition" class="nav-link" data-scroll-target="#work-life-features-over-time-and-attrition"><span class="toc-section-number">1.7</span>  7. Work-Life Features: Over Time and Attrition</a></li>
+  <li><a href="#training-and-education-training-times-last-year-and-attrition" id="toc-training-and-education-training-times-last-year-and-attrition" class="nav-link" data-scroll-target="#training-and-education-training-times-last-year-and-attrition"><span class="toc-section-number">1.8</span>  8. Training and Education: Training Times Last Year and Attrition<br>
+  </a></li>
+  <li><a href="#time-based-features-years-at-company-and-attrition" id="toc-time-based-features-years-at-company-and-attrition" class="nav-link" data-scroll-target="#time-based-features-years-at-company-and-attrition"><span class="toc-section-number">1.9</span>  9. Time-Based Features: Years At Company and Attrition<br>
+  </a></li>
+  <li><a href="#time-based-features-years-since-last-promotion-and-attrition" id="toc-time-based-features-years-since-last-promotion-and-attrition" class="nav-link" data-scroll-target="#time-based-features-years-since-last-promotion-and-attrition"><span class="toc-section-number">1.10</span>  10. Time-Based Features: Years Since Last Promotion and Attrition<br>
+  </a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1570,10 +1595,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <section id="challenge-answers" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Challenge Answers:</h1>
-<ol type="1">
-<li>Compensation features: MonthlyIncome and Attrition<br>
-</li>
-</ol>
+<section id="compensation-features-monthlyincome-and-attrition" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="compensation-features-monthlyincome-and-attrition"><span class="header-section-number">1.1</span> 1. Compensation features: MonthlyIncome and Attrition<br>
+</h2>
 <p>Answer: C- Those that are leaving have a lower Monthly Income</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-20_5f948388ca4304cbbd0364a197e7ba57">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
@@ -1592,10 +1616,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<ol start="2" type="1">
-<li>Compensation Features: Percent Salary Hike and Attrition<br>
-</li>
-</ol>
+</section>
+<section id="compensation-features-percent-salary-hike-and-attrition" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="compensation-features-percent-salary-hike-and-attrition"><span class="header-section-number">1.2</span> 2. Compensation Features: Percent Salary Hike and Attrition<br>
+</h2>
 <p>Answer: D- It’s difficult to deduce anything based on the visualization</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-21_3d70a2e9b3845a32c066bd39ca21f0b2">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
@@ -1614,10 +1638,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<ol start="3" type="1">
-<li>Compensation Features: Stock Option Level and Attrition<br>
-</li>
-</ol>
+</section>
+<section id="compensation-features-stock-option-level-and-attrition" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="compensation-features-stock-option-level-and-attrition"><span class="header-section-number">1.3</span> 3. Compensation Features: Stock Option Level and Attrition<br>
+</h2>
 <p>Answer: B - Those that are staying have a higher stock option level</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-22_5d7c3c1daae20358b7de7cf3a85c4911">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
@@ -1631,10 +1655,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<ol start="4" type="1">
-<li>Survey Results: Environment Satisfaction , Attrition<br>
-</li>
-</ol>
+</section>
+<section id="survey-results-environment-satisfaction-attrition" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="survey-results-environment-satisfaction-attrition"><span class="header-section-number">1.4</span> 4. Survey Results: Environment Satisfaction , Attrition<br>
+</h2>
 <p>Answer: A- A higher proportion of those leaving have a low environment satisfaction level</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-23_67675fbe5dedc3a3ca68944993cc95af">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
@@ -1648,10 +1672,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<ol start="5" type="1">
-<li>Survey Results: Work Life Balance and Attrition<br>
-</li>
-</ol>
+</section>
+<section id="survey-results-work-life-balance-and-attrition" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="survey-results-work-life-balance-and-attrition"><span class="header-section-number">1.5</span> 5. Survey Results: Work Life Balance and Attrition<br>
+</h2>
 <p>Answer: B- Those that are staying have a higher density of 2’s and 3’s</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-24_7da2a71a6527f7c154e814d7b2c70b3f">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
@@ -1665,10 +1689,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<ol start="6" type="1">
-<li>Performance Data: Job Involvement and Attrition<br>
-</li>
-</ol>
+</section>
+<section id="performance-data-job-involvement-and-attrition" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="performance-data-job-involvement-and-attrition"><span class="header-section-number">1.6</span> 6. Performance Data: Job Involvement and Attrition<br>
+</h2>
 <p>Answer: A- Those that are leaving have a lower density of 3’s and 4’s</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-25_5ef7c27eb61d09a0243bbc765a46c5ea">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
@@ -1682,9 +1706,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<ol start="7" type="1">
-<li>Work-Life Features: Over Time and Attrition</li>
-</ol>
+</section>
+<section id="work-life-features-over-time-and-attrition" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="work-life-features-over-time-and-attrition"><span class="header-section-number">1.7</span> 7. Work-Life Features: Over Time and Attrition</h2>
 <p>Answer: A- The proportion of those leaving that are working Over Time are high compared to those that are not leaving</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-26_7040b8035e81a50a1dc1a4b54b4f420c">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
@@ -1698,10 +1722,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<ol start="8" type="1">
-<li>Training and Education: Training Times Last Year and Attrition<br>
-</li>
-</ol>
+</section>
+<section id="training-and-education-training-times-last-year-and-attrition" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="training-and-education-training-times-last-year-and-attrition"><span class="header-section-number">1.8</span> 8. Training and Education: Training Times Last Year and Attrition<br>
+</h2>
 <p>Answer: B- People that leave tend to have less annual trainings</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-27_ec64d510d135dfa251a31c08798f6a3e">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
@@ -1715,10 +1739,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<ol start="9" type="1">
-<li>Time-Based Features: Years At Company and Attrition<br>
-</li>
-</ol>
+</section>
+<section id="time-based-features-years-at-company-and-attrition" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="time-based-features-years-at-company-and-attrition"><span class="header-section-number">1.9</span> 9. Time-Based Features: Years At Company and Attrition<br>
+</h2>
 <p>Answer: B- People that leave tend to have less working years at the company</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-28_529ba7bd230507cf461f014139b35d76">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
@@ -1732,10 +1756,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<ol start="10" type="1">
-<li>Time-Based Features: Years Since Last Promotion and Attrition<br>
-</li>
-</ol>
+</section>
+<section id="time-based-features-years-since-last-promotion-and-attrition" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="time-based-features-years-since-last-promotion-and-attrition"><span class="header-section-number">1.10</span> 10. Time-Based Features: Years Since Last Promotion and Attrition<br>
+</h2>
 <p>Answer: C- It’s difficult to deduce anything based on the visualization</p>
 <div class="cell" data-hash="03_h20_cache/html/unnamed-chunk-29_f182e8f89eac40177633de23ad843efd">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span></span>
@@ -1751,6 +1775,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -2003,7 +2028,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":true});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true});</script>
 
 
 
