@@ -174,6 +174,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="dropdown-item" href="../../content/01_journal/04_h20.html">
  <span class="dropdown-text">04 Automated Machine Learning with H20 (II)</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/01_journal/06_lime.html">
+ <span class="dropdown-text">06 Explaining Black-Box Models With LIME</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -190,7 +194,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#load-the-training-test-dataset" id="toc-load-the-training-test-dataset" class="nav-link active" data-scroll-target="#load-the-training-test-dataset"><span class="toc-section-number">1</span>  1. Load the training &amp; test dataset</a>
+  <ul class="collapse">
+  <li><a href="#loading-libs" id="toc-loading-libs" class="nav-link" data-scroll-target="#loading-libs"><span class="toc-section-number">1.1</span>  Loading Libs:</a></li>
+  <li><a href="#loading-the-testing-and-training-dataset" id="toc-loading-the-testing-and-training-dataset" class="nav-link" data-scroll-target="#loading-the-testing-and-training-dataset"><span class="toc-section-number">1.2</span>  Loading the Testing and Training Dataset:</a></li>
+  </ul></li>
+  <li><a href="#specifiying-response-and-predictor" id="toc-specifiying-response-and-predictor" class="nav-link" data-scroll-target="#specifiying-response-and-predictor"><span class="toc-section-number">2</span>  2. Specifiying response and predictor:</a>
+  <ul class="collapse">
+  <li><a href="#starting-h2o" id="toc-starting-h2o" class="nav-link" data-scroll-target="#starting-h2o"><span class="toc-section-number">2.1</span>  Starting H2O:</a></li>
+  </ul></li>
+  <li><a href="#running-automl-specifying-the-stopping-criterion" id="toc-running-automl-specifying-the-stopping-criterion" class="nav-link" data-scroll-target="#running-automl-specifying-the-stopping-criterion"><span class="toc-section-number">3</span>  3. Running AutoML specifying the stopping criterion:</a></li>
+  <li><a href="#view-the-leaderboard" id="toc-view-the-leaderboard" class="nav-link" data-scroll-target="#view-the-leaderboard"><span class="toc-section-number">4</span>  4. View the Leaderboard:</a></li>
+  <li><a href="#leader-model-prediction" id="toc-leader-model-prediction" class="nav-link" data-scroll-target="#leader-model-prediction"><span class="toc-section-number">5</span>  5. Leader Model Prediction:</a></li>
+  <li><a href="#leader-model-save-to-local-memory" id="toc-leader-model-save-to-local-memory" class="nav-link" data-scroll-target="#leader-model-save-to-local-memory"><span class="toc-section-number">6</span>  6.Leader model save to local memory:</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -224,7 +246,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Load the training &amp; test dataset</p>
+<section id="load-the-training-test-dataset" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 1. Load the training &amp; test dataset</h1>
+<section id="loading-libs" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="loading-libs"><span class="header-section-number">1.1</span> Loading Libs:</h2>
 <div class="cell" data-hash="04_h20_cache/html/unnamed-chunk-1_0057b3d1273266148c739923b204e76b">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -266,7 +291,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(workflows)</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="fu">library</span>(tune)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Loading the Testing and Training Dataset:</p>
+</section>
+<section id="loading-the-testing-and-training-dataset" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="loading-the-testing-and-training-dataset"><span class="header-section-number">1.2</span> Loading the Testing and Training Dataset:</h2>
 <div class="cell" data-hash="04_h20_cache/html/unnamed-chunk-2_4c51e8a29c460446c2e929e206a962d8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>product_dataset <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../../files/product_backorders.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -317,7 +344,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb12-3"><a href="#cb12-3"></a>train_table_final <span class="ot">&lt;-</span> <span class="fu">training</span>(split_object)</span>
 <span id="cb12-4"><a href="#cb12-4"></a>test_table_final <span class="ot">&lt;-</span> <span class="fu">testing</span>(split_object)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Specifiying response and predictor:</p>
+</section>
+</section>
+<section id="specifiying-response-and-predictor" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 2. Specifiying response and predictor:</h1>
 <div class="cell" data-hash="04_h20_cache/html/unnamed-chunk-3_d9b04fcb2d7eade455601c28b48b6128">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>my_recipe_object <span class="ot">&lt;-</span> <span class="fu">recipe</span>(product_backorder <span class="sc">~</span>., <span class="at">data =</span> train_table_final) <span class="sc">%&gt;%</span> </span>
 <span id="cb13-2"><a href="#cb13-2"></a>    <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>()) <span class="sc">%&gt;%</span> </span>
@@ -365,7 +395,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt; $ rev_stop_Yes        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</code></pre>
 </div>
 </div>
-<p>Starting H2O:</p>
+<section id="starting-h2o" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="starting-h2o"><span class="header-section-number">2.1</span> Starting H2O:</h2>
 <div class="cell" data-hash="04_h20_cache/html/unnamed-chunk-6_2646fbb2d6e8154f0342e0a9b9c77297">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(h2o)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -432,7 +463,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt; Please download and install the latest version from: https://h2o-release.s3.amazonaws.com/h2o/latest_stable.html</code></pre>
 </div>
 </div>
-<p>Running AutoML specifying the stopping criterion:</p>
+</section>
+</section>
+<section id="running-automl-specifying-the-stopping-criterion" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 3. Running AutoML specifying the stopping criterion:</h1>
 <div class="cell" data-hash="04_h20_cache/html/unnamed-chunk-7_cda459f1686423eec00346c7b298facb">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">library</span>(h2o)</span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="fu">h2o.init</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -596,7 +630,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   |======================================================================| 100%</code></pre>
 </div>
 </div>
-<p>Leaderboard:</p>
+</section>
+<section id="view-the-leaderboard" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 4. View the Leaderboard:</h1>
 <div class="cell" data-hash="04_h20_cache/html/unnamed-chunk-9_71afe2d3b0ba625c6af247234d1071c6">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>automl_h2o_modelling<span class="sc">@</span>leaderboard </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -704,7 +740,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb41-8"><a href="#cb41-8"></a>    <span class="fu">return</span>(h2o_model_name)</span>
 <span id="cb41-9"><a href="#cb41-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Leader Model Prediction:</p>
+</section>
+<section id="leader-model-prediction" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 5. Leader Model Prediction:</h1>
 <div class="cell" data-hash="04_h20_cache/html/unnamed-chunk-11_f66f36e2dbe1233c9fbc40d7af619e39">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">h2o.init</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -804,7 +842,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt; $ predict &lt;dbl&gt; 0.8564444, 0.4372353, 0.7754818, 0.5424764, 0.1062112, 0.51310…</code></pre>
 </div>
 </div>
-<p>Leader model save to local memory:</p>
+</section>
+<section id="leader-model-save-to-local-memory" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 6.Leader model save to local memory:</h1>
 <div class="cell" data-hash="04_h20_cache/html/unnamed-chunk-14_aa787d0b7e7d82604a144b171a82670f">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>optimum_model <span class="sc">%&gt;%</span> <span class="fu">h2o.saveModel</span>(<span class="at">path =</span> <span class="st">"Challenge_H20_Leader_Model_20230604"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -814,6 +854,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Footer</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
