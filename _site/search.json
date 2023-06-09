@@ -186,70 +186,70 @@
     "href": "content/01_journal/03_h20.html#compensation-features-monthlyincome-and-attrition",
     "title": "Challenge - Automated Machine Learning with H2O",
     "section": "1.1 1. Compensation features: MonthlyIncome and Attrition\n",
-    "text": "1.1 1. Compensation features: MonthlyIncome and Attrition\n\nAnswer: C- Those that are leaving have a lower Monthly Income\n\nemployee_attrition_tbl %>%\n    select(Attrition, contains(\"income\"), contains(\"rate\"), contains(\"salary\"), contains(\"stock\")) %>%\n    plot_ggpairs(Attrition)\n\n#> Warning: `aes_string()` was deprecated in ggplot2 3.0.0.\n#> ℹ Please use tidy evaluation idioms with `aes()`.\n#> ℹ See also `vignette(\"ggplot2-in-packages\")` for more information."
+    "text": "1.1 1. Compensation features: MonthlyIncome and Attrition\n\nAnswer: C- Those that are leaving have a lower Monthly Income\n\n(a)Those that are leaving the company have a higher Monthly Income\n(b)That those are staying have a lower Monthly Income\n(c)Those that are leaving have a lower Monthly Income\n(d)It’s difficult to deduce anything based on the visualization\n\n\nemployee_attrition_tbl %>%\n    select(Attrition, contains(\"income\"), contains(\"rate\"), contains(\"salary\"), contains(\"stock\")) %>%\n    plot_ggpairs(Attrition)\n\n#> Warning: `aes_string()` was deprecated in ggplot2 3.0.0.\n#> ℹ Please use tidy evaluation idioms with `aes()`.\n#> ℹ See also `vignette(\"ggplot2-in-packages\")` for more information."
   },
   {
     "objectID": "content/01_journal/03_h20.html#compensation-features-percent-salary-hike-and-attrition",
     "href": "content/01_journal/03_h20.html#compensation-features-percent-salary-hike-and-attrition",
     "title": "Challenge - Automated Machine Learning with H2O",
     "section": "1.2 2. Compensation Features: Percent Salary Hike and Attrition\n",
-    "text": "1.2 2. Compensation Features: Percent Salary Hike and Attrition\n\nAnswer: D- It’s difficult to deduce anything based on the visualization\n\nemployee_attrition_tbl %>%\n    select(Attrition, contains(\"income\"), contains(\"rate\"), contains(\"salary\"), contains(\"stock\")) %>%\n    plot_ggpairs(Attrition)\n\n#> Warning: `aes_string()` was deprecated in ggplot2 3.0.0.\n#> ℹ Please use tidy evaluation idioms with `aes()`.\n#> ℹ See also `vignette(\"ggplot2-in-packages\")` for more information."
+    "text": "1.2 2. Compensation Features: Percent Salary Hike and Attrition\n\nAnswer: D- It’s difficult to deduce anything based on the visualization\n\n(a)Those that are leaving the company have a higher Percent Salary Hike\n(b)Those that are staying have a lower Percent Salary Hike\n(c)Those that are leaving have lower Percent Salary Hike\n(d)It’s difficult to deduce anything based on the visualization\n\n\nemployee_attrition_tbl %>%\n    select(Attrition, contains(\"income\"), contains(\"rate\"), contains(\"salary\"), contains(\"stock\")) %>%\n    plot_ggpairs(Attrition)\n\n#> Warning: `aes_string()` was deprecated in ggplot2 3.0.0.\n#> ℹ Please use tidy evaluation idioms with `aes()`.\n#> ℹ See also `vignette(\"ggplot2-in-packages\")` for more information."
   },
   {
     "objectID": "content/01_journal/03_h20.html#compensation-features-stock-option-level-and-attrition",
     "href": "content/01_journal/03_h20.html#compensation-features-stock-option-level-and-attrition",
     "title": "Challenge - Automated Machine Learning with H2O",
     "section": "1.3 3. Compensation Features: Stock Option Level and Attrition\n",
-    "text": "1.3 3. Compensation Features: Stock Option Level and Attrition\n\nAnswer: B - Those that are staying have a higher stock option level\n\nemployee_attrition_tbl %>%\n    select(Attrition, contains(\"income\"), contains(\"rate\"), contains(\"salary\"), contains(\"stock\")) %>%\n    plot_ggpairs(Attrition)"
+    "text": "1.3 3. Compensation Features: Stock Option Level and Attrition\n\nAnswer: B - Those that are staying have a higher stock option level\n\n(a)Those that are leaving the company have a higher stock option level\n(b)Those that are staying have a higher stock option level\n(c)It’s difficult to deduce anything based on the visualization\n\n\nemployee_attrition_tbl %>%\n    select(Attrition, contains(\"income\"), contains(\"rate\"), contains(\"salary\"), contains(\"stock\")) %>%\n    plot_ggpairs(Attrition)"
   },
   {
     "objectID": "content/01_journal/03_h20.html#survey-results-environment-satisfaction-attrition",
     "href": "content/01_journal/03_h20.html#survey-results-environment-satisfaction-attrition",
     "title": "Challenge - Automated Machine Learning with H2O",
     "section": "1.4 4. Survey Results: Environment Satisfaction , Attrition\n",
-    "text": "1.4 4. Survey Results: Environment Satisfaction , Attrition\n\nAnswer: A- A higher proportion of those leaving have a low environment satisfaction level\n\nemployee_attrition_tbl %>%\n    select(Attrition, contains(\"satisfaction\"), contains(\"life\")) %>%\n    plot_ggpairs(Attrition)"
+    "text": "1.4 4. Survey Results: Environment Satisfaction , Attrition\n\nAnswer: A- A higher proportion of those leaving have a low environment satisfaction level\n\n(a)A higher proportion of those leaving have a low environment satisfaction level\n(b)A higher proportion of those leaving have a high environment satisfaction level\n(c)It’s difficult to deduce anything based on the visualization\n\n\nemployee_attrition_tbl %>%\n    select(Attrition, contains(\"satisfaction\"), contains(\"life\")) %>%\n    plot_ggpairs(Attrition)"
   },
   {
     "objectID": "content/01_journal/03_h20.html#survey-results-work-life-balance-and-attrition",
     "href": "content/01_journal/03_h20.html#survey-results-work-life-balance-and-attrition",
     "title": "Challenge - Automated Machine Learning with H2O",
     "section": "1.5 5. Survey Results: Work Life Balance and Attrition\n",
-    "text": "1.5 5. Survey Results: Work Life Balance and Attrition\n\nAnswer: B- Those that are staying have a higher density of 2’s and 3’s\n\nemployee_attrition_tbl %>%\n    select(Attrition, contains(\"satisfaction\"), contains(\"life\")) %>%\n    plot_ggpairs(Attrition)"
+    "text": "1.5 5. Survey Results: Work Life Balance and Attrition\n\nAnswer: B- Those that are staying have a higher density of 2’s and 3’s\n\n(a)Those that are leaving have higher density of 2’s and 3’s\n(b)Those that are staying have a higher density of 2’s and 3’s\n(c)Those that are staying have a lower density of 2’s and 3’s\n(d)It’s difficult to deduce anything based on the visualization\n\n\nemployee_attrition_tbl %>%\n    select(Attrition, contains(\"satisfaction\"), contains(\"life\")) %>%\n    plot_ggpairs(Attrition)"
   },
   {
     "objectID": "content/01_journal/03_h20.html#performance-data-job-involvement-and-attrition",
     "href": "content/01_journal/03_h20.html#performance-data-job-involvement-and-attrition",
     "title": "Challenge - Automated Machine Learning with H2O",
     "section": "1.6 6. Performance Data: Job Involvement and Attrition\n",
-    "text": "1.6 6. Performance Data: Job Involvement and Attrition\n\nAnswer: A- Those that are leaving have a lower density of 3’s and 4’s\n\nemployee_attrition_tbl %>%\n  select(Attrition, contains(\"performance\"), contains(\"involvement\")) %>%\n  plot_ggpairs(Attrition)"
+    "text": "1.6 6. Performance Data: Job Involvement and Attrition\n\nAnswer: A- Those that are leaving have a lower density of 3’s and 4’s\n\n(a)Those that are leaving have a lower density of 3’s and 4’s\n(b)Those that are leaving have a lower density of 1’s and 2’s\n(c)Those that are staying have a lower density of 2’s and 3’s\n(d)It’s difficult to deduce anything based on the visualization\n\n\nemployee_attrition_tbl %>%\n  select(Attrition, contains(\"performance\"), contains(\"involvement\")) %>%\n  plot_ggpairs(Attrition)"
   },
   {
     "objectID": "content/01_journal/03_h20.html#work-life-features-over-time-and-attrition",
     "href": "content/01_journal/03_h20.html#work-life-features-over-time-and-attrition",
     "title": "Challenge - Automated Machine Learning with H2O",
     "section": "1.7 7. Work-Life Features: Over Time and Attrition",
-    "text": "1.7 7. Work-Life Features: Over Time and Attrition\nAnswer: A- The proportion of those leaving that are working Over Time are high compared to those that are not leaving\n\nemployee_attrition_tbl %>%\n  select(Attrition, contains(\"overtime\"), contains(\"travel\")) %>%\n  plot_ggpairs(Attrition)"
+    "text": "1.7 7. Work-Life Features: Over Time and Attrition\nAnswer: B- The proportion of those staying that are working Over Time are high compared to those that are not staying\n\n(a)The proportion of those leaving that are working Over Time are high compared to those that are not leaving\n(b)The proportion of those staying that are working Over Time are high compared to those that are not staying\n\n\nemployee_attrition_tbl %>%\n  select(Attrition, contains(\"overtime\"), contains(\"travel\")) %>%\n  plot_ggpairs(Attrition)"
   },
   {
     "objectID": "content/01_journal/03_h20.html#training-and-education-training-times-last-year-and-attrition",
     "href": "content/01_journal/03_h20.html#training-and-education-training-times-last-year-and-attrition",
     "title": "Challenge - Automated Machine Learning with H2O",
     "section": "1.8 8. Training and Education: Training Times Last Year and Attrition\n",
-    "text": "1.8 8. Training and Education: Training Times Last Year and Attrition\n\nAnswer: B- People that leave tend to have less annual trainings\n\nemployee_attrition_tbl %>%\n    select(Attrition, contains(\"training\"), contains(\"education\")) %>%\n    plot_ggpairs(Attrition)"
+    "text": "1.8 8. Training and Education: Training Times Last Year and Attrition\n\nAnswer: B- People that leave tend to have less annual trainings\n\n(a)People that leave tend to have more annual trainings\n(b)People that leave tend to have less annual trainings\n(c)It’s difficult to deduce anything based on the visualization\n\n\nemployee_attrition_tbl %>%\n    select(Attrition, contains(\"training\"), contains(\"education\")) %>%\n    plot_ggpairs(Attrition)"
   },
   {
     "objectID": "content/01_journal/03_h20.html#time-based-features-years-at-company-and-attrition",
     "href": "content/01_journal/03_h20.html#time-based-features-years-at-company-and-attrition",
     "title": "Challenge - Automated Machine Learning with H2O",
     "section": "1.9 9. Time-Based Features: Years At Company and Attrition\n",
-    "text": "1.9 9. Time-Based Features: Years At Company and Attrition\n\nAnswer: B- People that leave tend to have less working years at the company\n\nemployee_attrition_tbl %>%\n  select(Attrition, contains(\"years\")) %>%\n  plot_ggpairs(Attrition)"
+    "text": "1.9 9. Time-Based Features: Years At Company and Attrition\n\nAnswer: B- People that leave tend to have less working years at the company\n\n(a)People that leave tend to have more working years at the company\n(b)People that leave tend to have less working years at the company\n(c)It’s difficult to deduce anything based on the visualization\n\n\nemployee_attrition_tbl %>%\n  select(Attrition, contains(\"years\")) %>%\n  plot_ggpairs(Attrition)"
   },
   {
     "objectID": "content/01_journal/03_h20.html#time-based-features-years-since-last-promotion-and-attrition",
     "href": "content/01_journal/03_h20.html#time-based-features-years-since-last-promotion-and-attrition",
     "title": "Challenge - Automated Machine Learning with H2O",
     "section": "1.10 10. Time-Based Features: Years Since Last Promotion and Attrition\n",
-    "text": "1.10 10. Time-Based Features: Years Since Last Promotion and Attrition\n\nAnswer: C- It’s difficult to deduce anything based on the visualization\n\nemployee_attrition_tbl %>%\n  select(Attrition, contains(\"years\")) %>%\n  plot_ggpairs(Attrition)"
+    "text": "1.10 10. Time-Based Features: Years Since Last Promotion and Attrition\n\nAnswer: C- It’s difficult to deduce anything based on the visualization\n\n(a)Those that are leaving have more years since last promotion than those that are staying\n(b)Those that are leaving have fewer years since last promotion than those that are staying\n(c)It’s difficult to deduce anything based on the visualization\n\n\nemployee_attrition_tbl %>%\n  select(Attrition, contains(\"years\")) %>%\n  plot_ggpairs(Attrition)"
   },
   {
     "objectID": "content/01_journal/06_lime.html",

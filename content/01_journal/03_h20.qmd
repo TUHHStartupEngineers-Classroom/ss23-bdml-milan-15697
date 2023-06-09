@@ -433,6 +433,12 @@ employee_attrition_tbl %>%
 ## 1. Compensation features: MonthlyIncome and Attrition\
 
 Answer: C- Those that are leaving have a lower Monthly Income
+
+* (a)Those that are leaving the company have a higher Monthly Income
+* (b)That those are staying have a lower Monthly Income
+* <mark>(c)Those that are leaving have a lower Monthly Income</mark>
+* (d)It's difficult to deduce anything based on the visualization
+
 ```{r}
 
 employee_attrition_tbl %>%
@@ -443,6 +449,11 @@ employee_attrition_tbl %>%
 ## 2. Compensation Features: Percent Salary Hike and Attrition\
 
 Answer: D- It's difficult to deduce anything based on the visualization
+
+* (a)Those that are leaving the company have a higher Percent Salary Hike
+* (b)Those that are staying have a lower Percent Salary Hike
+* (c)Those that are leaving have lower Percent Salary Hike
+* <mark>(d)It's difficult to deduce anything based on the visualization</mark>
 ```{r}
 employee_attrition_tbl %>%
     select(Attrition, contains("income"), contains("rate"), contains("salary"), contains("stock")) %>%
@@ -452,6 +463,10 @@ employee_attrition_tbl %>%
 ## 3. Compensation Features: Stock Option Level and Attrition\
 
 Answer: B - Those that are staying have a higher stock option level
+
+* (a)Those that are leaving the company have a higher stock option level
+* <mark>(b)Those that are staying have a higher stock option level</mark>
+* (c)It's difficult to deduce anything based on the visualization
 ```{r}
 employee_attrition_tbl %>%
     select(Attrition, contains("income"), contains("rate"), contains("salary"), contains("stock")) %>%
@@ -461,6 +476,10 @@ employee_attrition_tbl %>%
 ## 4. Survey Results: Environment Satisfaction , Attrition\
 
 Answer: A- A higher proportion of those leaving have a low environment satisfaction level
+
+* <mark>(a)A higher proportion of those leaving have a low environment satisfaction level</mark>
+* (b)A higher proportion of those leaving have a high environment satisfaction level
+* (c)It's difficult to deduce anything based on the visualization
 ```{r}
 employee_attrition_tbl %>%
     select(Attrition, contains("satisfaction"), contains("life")) %>%
@@ -470,6 +489,11 @@ employee_attrition_tbl %>%
 ## 5. Survey Results: Work Life Balance and Attrition\
 
 Answer: B- Those that are staying have a higher density of 2's and 3's
+
+* (a)Those that are leaving have higher density of 2's and 3's
+* <mark>(b)Those that are staying have a higher density of 2's and 3's</mark>
+* (c)Those that are staying have a lower density of 2's and 3's
+* (d)It's difficult to deduce anything based on the visualization
 ```{r}
 employee_attrition_tbl %>%
     select(Attrition, contains("satisfaction"), contains("life")) %>%
@@ -479,6 +503,11 @@ employee_attrition_tbl %>%
 ## 6. Performance Data: Job Involvement and Attrition\
 
 Answer: A- Those that are leaving have a lower density of 3's and 4's
+
+* <mark>(a)Those that are leaving have a lower density of 3's and 4's</mark>
+* (b)Those that are leaving have a lower density of 1's and 2's
+* (c)Those that are staying have a lower density of 2's and 3's
+* (d)It's difficult to deduce anything based on the visualization
 ```{r}
 employee_attrition_tbl %>%
   select(Attrition, contains("performance"), contains("involvement")) %>%
@@ -487,7 +516,10 @@ employee_attrition_tbl %>%
 
 ## 7. Work-Life Features: Over Time and Attrition
 
-Answer: A- The proportion of those leaving that are working Over Time are high compared to those that are not leaving
+Answer: B- The proportion of those staying that are working Over Time are high compared to those that are not staying
+
+* (a)The proportion of those leaving that are working Over Time are high compared to those that are not leaving
+* <mark>(b)The proportion of those staying that are working Over Time are high compared to those that are not staying</mark>
 ```{r}
 employee_attrition_tbl %>%
   select(Attrition, contains("overtime"), contains("travel")) %>%
@@ -498,6 +530,10 @@ employee_attrition_tbl %>%
 ## 8. Training and Education: Training Times Last Year and Attrition\
  
 Answer: B- People that leave tend to have less annual trainings
+
+* (a)People that leave tend to have more annual trainings
+* <mark>(b)People that leave tend to have less annual trainings</mark>
+* (c)It's difficult to deduce anything based on the visualization
 ```{r}
 employee_attrition_tbl %>%
     select(Attrition, contains("training"), contains("education")) %>%
@@ -507,6 +543,10 @@ employee_attrition_tbl %>%
 ## 9. Time-Based Features: Years At Company and Attrition\
 
 Answer: B- People that leave tend to have less working years at the company
+
+* (a)People that leave tend to have more working years at the company
+* <mark>(b)People that leave tend to have less working years at the company</mark>
+* (c)It's difficult to deduce anything based on the visualization
 ```{r}
 employee_attrition_tbl %>%
   select(Attrition, contains("years")) %>%
@@ -516,6 +556,10 @@ employee_attrition_tbl %>%
 ## 10. Time-Based Features: Years Since Last Promotion and Attrition\
 
 Answer: C- It's difficult to deduce anything based on the visualization
+
+* (a)Those that are leaving have more years since last promotion than those that are staying
+* (b)Those that are leaving have fewer years since last promotion than those that are staying
+* <mark>(c)It's difficult to deduce anything based on the visualization</mark>
 ```{r}
 employee_attrition_tbl %>%
   select(Attrition, contains("years")) %>%
