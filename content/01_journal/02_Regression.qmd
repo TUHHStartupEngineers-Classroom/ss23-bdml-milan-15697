@@ -1,0 +1,127 @@
+---
+title: "Challenge - Supervised ML - Regression (II)"
+author: "Milan Bhardwaj"
+date: "6/3/2023"
+---
+
+# Build a Model:
+
+```{r}
+library(tidyverse)
+library(parsnip)
+library(recipes)
+library(rsample)
+library(yardstick)
+library(workflows)
+library(tune)
+library(xgboost)
+```
+
+# Reading the Data:
+```{r}
+bike_data <- readRDS("../../files/bike_features_tbl.rds") %>% select(-c("Brake Rotor"))
+bike_data
+```
+
+# Processing Initial Features:
+```{r}
+bike_data_processed <- bike_data %>%
+  select(model:url, `Rear Derailleur`, `Shift Lever`) %>%
+  mutate(
+      `shimano dura-ace`        = `Rear Derailleur` %>% str_to_lower() %>% str_detect("shimano dura-ace ") %>% as.numeric(),
+      `shimano ultegra`         = `Rear Derailleur` %>% str_to_lower() %>% str_detect("shimano ultegra ") %>% as.numeric(),
+      `shimano 105`             = `Rear Derailleur` %>% str_to_lower() %>% str_detect("shimano 105 ") %>% as.numeric(),
+      `shimano tiagra`          = `Rear Derailleur` %>% str_to_lower() %>% str_detect("shimano tiagra ") %>% as.numeric(),
+      `Shimano sora`            = `Rear Derailleur` %>% str_to_lower() %>% str_detect("shimano sora") %>% as.numeric(),
+      `shimano deore`           = `Rear Derailleur` %>% str_to_lower() %>% str_detect("shimano deore(?! xt)") %>% as.numeric(),
+      `shimano slx`             = `Rear Derailleur` %>% str_to_lower() %>% str_detect("shimano slx") %>% as.numeric(),
+      `shimano grx`             = `Rear Derailleur` %>% str_to_lower() %>% str_detect("shimano grx") %>% as.numeric(),
+      `Shimano xt`              = `Rear Derailleur` %>% str_to_lower() %>% str_detect("shimano deore xt |shimano xt ") %>% as.numeric(),
+      `Shimano xtr`             = `Rear Derailleur` %>% str_to_lower() %>% str_detect("shimano xtr") %>% as.numeric(),
+      `Shimano saint`           = `Rear Derailleur` %>% str_to_lower() %>% str_detect("shimano saint") %>% as.numeric(),
+      `SRAM red`                = `Rear Derailleur` %>% str_to_lower() %>% str_detect("sram red") %>% as.numeric(),
+      `SRAM force`              = `Rear Derailleur` %>% str_to_lower() %>% str_detect("sram force") %>% as.numeric(),
+      `SRAM rival`              = `Rear Derailleur` %>% str_to_lower() %>% str_detect("sram rival") %>% as.numeric(),
+      `SRAM apex`               = `Rear Derailleur` %>% str_to_lower() %>% str_detect("sram apex") %>% as.numeric(),
+      `SRAM xx1`                = `Rear Derailleur` %>% str_to_lower() %>% str_detect("sram xx1") %>% as.numeric(),
+      `SRAM x01`                = `Rear Derailleur` %>% str_to_lower() %>% str_detect("sram x01|sram xo1") %>% as.numeric(),
+      `SRAM gx`                 = `Rear Derailleur` %>% str_to_lower() %>% str_detect("sram gx") %>% as.numeric(),
+      `SRAM nx`                 = `Rear Derailleur` %>% str_to_lower() %>% str_detect("sram nx") %>% as.numeric(),
+      `SRAM sx`                 = `Rear Derailleur` %>% str_to_lower() %>% str_detect("sram sx") %>% as.numeric(),
+      `SRAM sx`                 = `Rear Derailleur` %>% str_to_lower() %>% str_detect("sram sx") %>% as.numeric(),
+      `Campagnolo potenza`      = `Rear Derailleur` %>% str_to_lower() %>% str_detect("campagnolo potenza") %>% as.numeric(),
+      `Campagnolo super record` = `Rear Derailleur` %>% str_to_lower() %>% str_detect("campagnolo super record") %>% as.numeric(),
+      `shimano nexus`           = `Shift Lever`     %>% str_to_lower() %>% str_detect("shimano nexus") %>% as.numeric(),
+      `shimano alfine`          = `Shift Lever`     %>% str_to_lower() %>% str_detect("shimano alfine") %>% as.numeric()
+  ) %>%
+  select(-c(`Rear Derailleur`, `Shift Lever`)) %>%
+  mutate_if(is.numeric, ~replace(., is.na(.), 0))
+bike_data_processed
+```
+
+# Using Recepies package to create features:
+```{r}
+# Build features using recipes
+set.seed(42)
+data_split <- initial_split(bike_data_processed, prop = 3/4)
+train_data <- training(data_split)
+test_data <- testing(data_split)
+
+train_recipe <- recipe(price ~ ., data = train_data) %>%
+  step_dummy(all_nominal(), -all_outcomes())
+
+```
+
+# Baking the recipe:
+```{r}
+train_transformed_tbl <- bake(prep(train_recipe), new_data = NULL)
+test_transformed_tbl <- bake(prep(train_recipe), new_data = test_data)
+train_transformed_tbl
+test_transformed_tbl
+```
+
+# Building xgboost model
+```{r}
+set.seed(42)
+xgboost_model <- boost_tree(
+  mode = "regression",
+  mtry = 30,
+  learn_rate = 0.1,
+  tree_depth = 10
+) %>%
+  set_engine("xgboost")
+```
+
+# Using workflow package:
+```{r}
+workflow_model <- workflow() %>%
+  add_model(xgboost_model) %>%
+  add_recipe(train_recipe)
+```
+
+# Fitting the workflow:
+```{r}
+model_fit <- fit(workflow_model, data = train_data)
+```
+
+# Model predictions and evaluation metrics:
+```{r}
+model_predictions <- predict(model_fit, new_data = test_data) %>%
+  bind_cols(test_data %>% select(price))
+evaluation_metrics <- metrics(truth = price, estimate = .pred, data = model_predictions)
+```
+
+# Some tuning:
+```{r}
+folds <- vfold_cv(train_data, v = 10)
+tuned_workflow <- workflow_model %>%
+  fit_resamples(resamples = folds)
+```
+
+# Evaluation of Model:
+```{r}
+best_model <- show_best(tuned_workflow, metric = "rmse")
+all_metrics <- collect_metrics(tuned_workflow)
+best_model
+all_metrics
+```
