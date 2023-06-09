@@ -1,0 +1,310 @@
+---
+title: "Challenge - Performance Measures"
+author: "Milan Bhardwaj"
+date: "06/09/2023"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
+```
+
+## Load the training & test dataset
+```{r}
+library(recipes)
+library(rsample)
+library(tune)
+```
+
+```{r}
+library(yardstick)
+library(workflows)
+library(tidyverse)
+library(parsnip)
+```
+
+```{r}
+master_data <- read_csv("../../files/product_backorders.csv")
+master_data_mutated <- master_data %>% 
+  mutate(
+      product_backorder = went_on_backorder %>% str_to_lower() %>% str_detect("yes") %>% as.numeric()
+  ) %>% 
+  mutate(product_backorder = as.factor(product_backorder)) %>%
+  select(-c(went_on_backorder))
+glimpse(master_data)
+
+product_split_obj<- initial_split(master_data_mutated, prop = 0.75)
+product_train_tbl<- training(product_split_obj)
+product_test_tbl<- testing(product_split_obj)
+```
+## Specifiy the response and predictor variables
+```{r}
+product_recipe_obj <- recipe(product_backorder ~., data = product_train_tbl) %>% 
+    step_zv(all_predictors()) %>% 
+    step_dummy(all_nominal(),-all_outcomes()) %>%
+    prep()
+```
+
+```{r}
+summary(product_recipe_obj)
+```
+
+## run AutoML specifying the stopping criterion
+```{r}
+library(h2o)
+h2o.init()
+```
+
+```{r}
+split_h2o_df <- h2o.splitFrame(as.h2o(product_train_tbl), ratios = c(0.75), seed = 42)
+train_h2o_df <- split_h2o_df[[1]]
+valid_h2o_df <- split_h2o_df[[2]]
+test_h2o_df  <- as.h2o(product_test_tbl)
+
+y <- "product_backorder"
+x <- setdiff(names(train_h2o_df), y)
+```
+
+```{r}
+automl_product_models_h2o <- h2o.automl(
+  x = x,
+  y = y,
+  training_frame    = train_h2o_df,
+  validation_frame  = valid_h2o_df,
+  leaderboard_frame = test_h2o_df,
+  nfolds            = 5,
+  max_runtime_secs  = 60,
+  stopping_metric = "auc",
+  stopping_rounds = 3,
+  stopping_tolerance = 1e-2
+)
+```
+
+# Leaderboard visualization
+```{r}
+automl_product_models_h2o@leaderboard 
+
+summary(automl_product_models_h2o@leaderboard %>% 
+              as_tibble() )
+```
+
+```{r}
+data_transformed_tbl_h20 <- automl_product_models_h2o@leaderboard %>%
+        as_tibble() %>%
+        select(-c(rmse, mse)) %>% 
+        mutate(model_type = str_extract(model_id, "[^_]+")) %>%
+        slice(1:15) %>% 
+        rownames_to_column(var = "rowname") %>%
+        mutate(
+          model_id   = as_factor(model_id) %>% reorder(auc),
+          model_type = as.factor(model_type)
+          ) %>% 
+          pivot_longer(cols = -c(model_id, model_type, rowname), 
+                       names_to = "key", 
+                       values_to = "value", 
+                       names_transform = list(key = forcats::fct_inorder)
+                       ) %>% 
+        mutate(model_id = paste0(rowname, ". ", model_id) %>% as_factor() %>% fct_rev())
+
+```
+
+```{r}
+data_transformed_tbl_h20 %>%
+        ggplot(aes(value, model_id, color = model_type)) +
+        geom_point(size = 3) +
+        geom_label(aes(label = round(value, 2), hjust = "inward")) +
+        
+        facet_wrap(~ key, scales = "free_x") +
+        labs(title = "Metrics",
+             subtitle = paste0("Order by: ", "auc"),
+             y = "Postion, ID of model", x = "") + 
+        theme(legend.position = "bottom")
+```
+
+
+# Tune a model with grid search
+```{r}
+dl_grid_01 <- h2o.grid(
+
+    algorithm = "deeplearning",
+    grid_id = "dl_grid_01",
+
+    x = x,
+    y = y,
+    
+    training_frame   = train_h2o_df,
+    validation_frame = valid_h2o_df,
+    nfolds = 5,
+
+        hyper_params = list(
+        hidden = list(c(10, 10, 10), c(20, 15, 10), c(20, 20, 20)),
+        epochs = c(10, 15, 20)
+    )
+)
+
+```
+
+```{r}
+h2o.getGrid(grid_id = "dl_grid_01", sort_by = "auc", decreasing = TRUE)
+```
+
+```{r}
+dl_grid_01_model <- h2o.getModel("deeplearning_grid_01_model_8")
+
+dl_grid_01_model %>% h2o.auc(train = T, valid = T, xval = T)
+
+h2o_perf <-dl_grid_01_model %>%
+    h2o.performance(newdata = as.h2o(product_test_tbl))
+h2o_perf
+```
+
+# Visualize the trade of between the precision and the recall and the optimal threshold
+```{r}
+h2o.confusionMatrix(h2o_perf)
+
+performance_tbl <- h2o_perf %>%
+    h2o.metric() %>%
+    as.tibble()
+
+```
+
+```{r}
+theme_new <- theme(
+      legend.position  = "bottom",
+      legend.key       = element_blank(),,
+      panel.background = element_rect(fill   = "transparent"),
+      panel.border     = element_rect(color = "blue", fill = NA, size = 0.5),
+      panel.grid.major = element_line(color = "pink", size = 0.333)
+      ) 
+
+performance_tbl %>%
+    filter(f1 == max(f1))
+```
+
+```{r}
+performance_tbl %>%
+    ggplot(aes(x = threshold)) +
+    geom_line(aes(y = precision), color = "black", size = 1) +
+    geom_line(aes(y = recall), color = "violet", size = 1) +
+    
+    geom_vline(xintercept = h2o.find_threshold_by_max_metric(h2o_perf, "f1")) +
+    labs(title = "Precision vs Recall", y = "value") +
+    theme_new
+```
+
+
+```{r}
+best_model <- h2o.getModel("deeplearning_grid_01_model_8")
+best_model %>% h2o.saveModel(path = "05_my_performance_measure_model",force = TRUE)
+```
+
+```{r}
+load_model_performance_metrics <- function(path, product_test_tbl) {
+    
+    model_h2o <- h2o.loadModel(path)
+    perf_h2o  <- h2o.performance(model_h2o, newdata = as.h2o(product_test_tbl)) 
+    
+    perf_h2o %>%
+        h2o.metric() %>%
+        as_tibble() %>%
+        mutate(auc = h2o.auc(perf_h2o)) %>%
+        select(tpr, fpr, auc, precision, recall)
+    
+}
+
+```
+
+# PLOT
+## ROC Plot
+```{r}
+model_metrics_tbl <- fs::dir_info(path = "05_my_performance_measure_model") %>%
+    select(path) %>%
+    mutate(metrics = map(path, load_model_performance_metrics, product_test_tbl)) %>%
+    unnest(cols = metrics)
+
+glimpse(model_metrics_tbl)
+
+model_metrics_tbl %>%
+    mutate(
+        # Extract the model names
+        path = str_split(path, pattern = "/", simplify = T)[,2] %>% as_factor(),
+        auc  = auc %>% round(3) %>% as.character() %>% as_factor()
+        ) %>%
+    ggplot(aes(fpr, tpr, color = path, linetype = auc)) +
+    geom_line(size = 1) +
+
+    # just for demonstration purposes
+    geom_abline(color = "violet", linetype = "dotted") +
+
+    theme_new +
+    theme(
+      legend.direction = "vertical",
+      ) +
+    labs(
+        title = "ROC Plot",
+        subtitle = "Performance of 3 Top Performing Models"
+    )
+```
+
+## Precision vs Recall Plot
+```{r}
+model_metrics_tbl %>%
+    mutate(
+        path = str_split(path, pattern = "/", simplify = T)[,2] %>% as_factor(),
+        auc  = auc %>% round(3) %>% as.character() %>% as_factor()
+    ) %>%
+    ggplot(aes(recall, precision, color = path, linetype = auc)) +
+    geom_line(size = 1) +
+    theme_new + 
+    theme(
+      legend.direction = "vertical",
+      ) +
+    labs(
+        title = "Precision vs Recall Plot",
+        subtitle = "Best 3 Top Performing Models' Performance"
+    )
+```
+
+## Gain Plot
+```{r}
+gain_lift_tbl <- h2o_perf %>%
+    h2o.gainsLift() %>%
+    as.tibble()
+
+gain_transformed_tbl <- gain_lift_tbl %>% 
+    select(group, cumulative_data_fraction, cumulative_capture_rate, cumulative_lift) %>%
+    select(-contains("lift")) %>%
+    mutate(baseline = cumulative_data_fraction) %>%
+    rename(gain     = cumulative_capture_rate) %>%
+    pivot_longer(cols = c(gain, baseline), values_to = "value", names_to = "key")
+
+gain_transformed_tbl %>%
+    ggplot(aes(x = cumulative_data_fraction, y = value, color = key)) +
+    geom_line(size = 1.5) +
+    labs(
+        title = "Gain Chart",
+        x = "Cumulative Data Fraction",
+        y = "Gain"
+    ) +
+    theme_new
+
+```
+
+## Lift Plot
+```{r}
+lift_transformed_tbl <- gain_lift_tbl %>% 
+    select(group, cumulative_data_fraction, cumulative_capture_rate, cumulative_lift) %>%
+    select(-contains("capture")) %>%
+    mutate(baseline = 1) %>%
+    rename(lift = cumulative_lift) %>%
+    pivot_longer(cols = c(lift, baseline), values_to = "value", names_to = "key")
+
+lift_transformed_tbl %>%
+    ggplot(aes(x = cumulative_data_fraction, y = value, color = key)) +
+    geom_line(size = 1.5) +
+    labs(
+        title = "Lift Chart",
+        x = "Cumulative Data Fraction",
+        y = "Lift"
+    ) +
+    theme_new
+```
